@@ -1,0 +1,20 @@
+{
+    "projectName": "cofRN",
+    "projectPath": "/Users/aidan.parkinson/dev/cofRN",
+    "defaultEditor": "idea14ce",
+    "frontendHandler": {
+        "javascript": "/Users/aidan.parkinson/.nvm/versions/node/v11.6.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "react-native",
+        "config": {
+            "SourceDir": "/",
+            "DistributionDir": "/",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "npm run-script start"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/Users/aidan.parkinson/.nvm/versions/node/v11.6.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}
