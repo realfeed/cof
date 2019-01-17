@@ -7,10 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import Amplify from 'aws-amplify';
+import {Platform, StyleSheet, Text, View, Linking, Button} from 'react-native';
+import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
-import { withAuthenticator } from 'aws-amplify-react';
+import { withAuthenticator } from 'aws-amplify-react-native';
+
 Amplify.configure(aws_exports);
 
 const instructions = Platform.select({
