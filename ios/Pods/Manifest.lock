@@ -1,4 +1,5 @@
 PODS:
+  - JKBigInteger2 (0.0.5)
   - React (0.57.8):
     - React/Core (= 0.57.8)
   - react-native-mapbox-gl (6.1.3):
@@ -41,6 +42,11 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNAWSCognito (3.0.7):
+    - JKBigInteger2 (= 0.0.5)
+    - React
+  - RNVectorIcons (4.6.0):
+    - React
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
@@ -61,21 +67,34 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNAWSCognito (from `../node_modules/amazon-cognito-identity-js`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JKBigInteger2
 
 EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native"
   react-native-mapbox-gl:
     :path: "../node_modules/@mapbox/react-native-mapbox-gl"
+  RNAWSCognito:
+    :path: "../node_modules/amazon-cognito-identity-js"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/Yoga.podspec"
 
 SPEC CHECKSUMS:
+  JKBigInteger2: e91672035c42328c48b7dd015b66812ddf40ca9b
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-mapbox-gl: b42480060cdcc515dfa3d8e403fb4dd32466a1b9
+  RNAWSCognito: 5f4859d05c2a20dafc8a1bbb15ffc6cc92fa4d0d
+  RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 1e6e31b5a3bb88f02fe8323edeef29cc8a980cc0
+PODFILE CHECKSUM: ce16d3663e1b34594be88284a2d944f6b42195d4
 
 COCOAPODS: 1.5.3

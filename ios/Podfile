@@ -32,6 +32,10 @@ target 'cofRN' do
 
   # Mapbox
   pod 'react-native-mapbox-gl', :path => '../node_modules/@mapbox/react-native-mapbox-gl'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RNAWSCognito', :path => '../node_modules/amazon-cognito-identity-js'
+
   target 'cofRNTests' do
     inherit! :search_paths
     # Pods for testing

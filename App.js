@@ -11,6 +11,10 @@ import {Platform, StyleSheet, Text, View, Linking, Button} from 'react-native';
 import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
+import Mapbox from '@mapbox/react-native-mapbox-gl';
+import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv'
+
+Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 Amplify.configure(aws_exports);
 
@@ -27,9 +31,12 @@ class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Mapbox.MapView
+            styleURL={Mapbox.StyleURL.Street}
+            zoomLevel={15}
+            centerCoordinate={[11.256, 43.770]}
+            style={styles.container}>
+        </Mapbox.MapView>
       </View>
     );
   }
@@ -38,19 +45,6 @@ class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
 
