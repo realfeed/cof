@@ -36,6 +36,12 @@ target 'cofRN' do
 
   pod 'RNAWSCognito', :path => '../node_modules/amazon-cognito-identity-js'
 
+  pod 'RNTableView', :path => '../node_modules/react-native-tableview'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'cofRNTests' do
     inherit! :search_paths
     # Pods for testing

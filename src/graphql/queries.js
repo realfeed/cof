@@ -161,6 +161,11 @@ export const allProperty = `query AllProperty($userId: ID!, $userType: String!) 
   allProperty(userId: $userId, userType: $userType) {
     propertyId
     name
+    averageNoise
+    averageLighting
+    averageComfort
+    averageHealth
+    averageProductivity
   }
 }
 `;

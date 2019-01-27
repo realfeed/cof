@@ -35,7 +35,7 @@ export const createConversation = `mutation CreateConversation($createdAt: Strin
     minor
     latitude
     longitude
-    geoAddr
+    PropertyId
   }
 }
 `;
@@ -132,7 +132,7 @@ export const createUserConversations = `mutation CreateUserConversations(
         minor
         latitude
         longitude
-        geoAddr
+        PropertyId
       }
       conversationId
       user {
@@ -162,7 +162,7 @@ export const createUserConversations = `mutation CreateUserConversations(
       minor
       latitude
       longitude
-      geoAddr
+      PropertyId
     }
     conversationId
     user {
@@ -185,6 +185,11 @@ export const createProperty = `mutation CreateProperty($propertyId: String!, $na
   createProperty(propertyId: $propertyId, name: $name) {
     propertyId
     name
+    averageNoise
+    averageLighting
+    averageComfort
+    averageHealth
+    averageProductivity
   }
 }
 `;

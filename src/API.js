@@ -70,7 +70,7 @@ export type CreateConversationMutation = {|
     // Longitude of iBeacon for strongest signal to the initial feedback.
     longitude: ?number,
     // Property address to the initial feedback.
-    geoAddr: ?string,
+    PropertyId: ?string,
   |},
 |};
 
@@ -219,7 +219,7 @@ export type CreateUserConversationsMutation = {|
         // Longitude of iBeacon for strongest signal to the initial feedback.
         longitude: ?number,
         // Property address to the initial feedback.
-        geoAddr: ?string,
+        PropertyId: ?string,
       |},
       conversationId: string,
       user: ? {|
@@ -272,7 +272,7 @@ export type CreateUserConversationsMutation = {|
       // Longitude of iBeacon for strongest signal to the initial feedback.
       longitude: ?number,
       // Property address to the initial feedback.
-      geoAddr: ?string,
+      PropertyId: ?string,
     |},
     conversationId: string,
     user: ? {|
@@ -313,6 +313,12 @@ export type CreatePropertyMutation = {|
     propertyId: string,
     // Human-readable name of the property
     name: string,
+    // Summary performance indicators.
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
   |},
 |};
 
@@ -588,5 +594,11 @@ export type AllPropertyQuery = {|
     propertyId: string,
     // Human-readable name of the property
     name: string,
+    // Summary performance indicators.
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
   |} >,
 |};

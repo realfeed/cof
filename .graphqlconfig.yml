@@ -1,0 +1,17 @@
+projects:
+  My AppSync App:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        graphQLApiId: r6bf24xoejah5ekzd5lnon5kq4
+        codeGenTarget: flow
+        generatedFileName: src/API.js
+        docsFilePath: src/graphql
+        region: eu-west-1
+      endpoints:
+        prod: >-
+          https://i3zjkdglvrfrnkc6esq6gig54m.appsync-api.eu-west-1.amazonaws.com/graphql

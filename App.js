@@ -7,14 +7,16 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Linking, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
+
+import {createStackNavigator, createAppNavigator} from 'react-navigation';
+
+import HomeScreen from './src/components/Home';
+import NewLocationScreen from './src/components/NewLocation';
+
 import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
-import Mapbox from '@mapbox/react-native-mapbox-gl';
-import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv'
-
-Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 Amplify.configure(aws_exports);
 
@@ -25,27 +27,14 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-
-class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Mapbox.MapView
-            styleURL={Mapbox.StyleURL.Street}
-            zoomLevel={15}
-            centerCoordinate={[11.256, 43.770]}
-            style={styles.container}>
-        </Mapbox.MapView>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+const MainNavigator = createStackNavigator({
+  Home: HomeScreen,
+  NewLocation: NewLocationScreen,
+//  Feedback: ListFeedbackScreen,
+//  NewFeedback: NewFeedbackScreen,
+//  Messages: MessagingScreen,
 });
+
+const App = createAppNavigator(MainNavigator);
 
 export default withAuthenticator(App, true);
