@@ -21,7 +21,7 @@ export default class HomeScreen extends Component<Props> {
     }
   }
 
-  static navigationOptions = { header:null}
+  static navigationOptions = { header:null};
 
   render() {
     const {navigate} = this.props.navigation;
@@ -34,7 +34,7 @@ export default class HomeScreen extends Component<Props> {
         text="New Location"
         upperCase={false}
         icon="add"
-        onPress={()=> this.props.navigation.navigate("NewLocation")}>
+        onPress={()=> navigate("NewLocation")}>
         </Button>
         <TableView
           style={styles.container}

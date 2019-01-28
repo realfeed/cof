@@ -21,7 +21,7 @@ export default class NewLocationScreen extends Component<Props> {
     }
   }
 
-  static navigationOptions = { header:null}
+  static navigationOptions = { header:null};
 
   render() {
     const {navigate} = this.props.navigation;
@@ -33,7 +33,7 @@ export default class NewLocationScreen extends Component<Props> {
       text="View Locations"
       upperCase={false}
       icon="home"
-      onPress={()=> this.props.navigation.navigate("Home")}>
+      onPress={()=> navigate("Home")}>
       </Button>
         <View style={styles.container}>
           <Mapbox.MapView
