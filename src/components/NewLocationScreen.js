@@ -39,9 +39,9 @@ export default class NewLocationScreen extends Component<Props> {
         <Button
         iconLeft
         style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
-        text="View Locations"
+        text="Add Location"
         upperCase={false}
-        icon="home"
+        icon="add"
         onPress={()=> this.props.navigation.navigate("Home")}>
         </Button>
         <TableView
@@ -59,7 +59,7 @@ export default class NewLocationScreen extends Component<Props> {
           tableViewStyle={TableView.Consts.Style.Grouped}
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
-          <Section label="Participating Locations">
+          <Section label="Nearby Locations">
             <Item value="1" onPress={() => true}>
               {this.state.myBuildings[0].propertyId}
             </Item>
