@@ -181,8 +181,32 @@ export const createUserConversations = `mutation CreateUserConversations(
   }
 }
 `;
-export const createProperty = `mutation CreateProperty($propertyId: String!, $name: String!) {
-  createProperty(propertyId: $propertyId, name: $name) {
+export const createProperty = `mutation CreateProperty($input: CreatePropertyInput!) {
+  createProperty(input: $input) {
+    propertyId
+    name
+    averageNoise
+    averageLighting
+    averageComfort
+    averageHealth
+    averageProductivity
+  }
+}
+`;
+export const updateProperty = `mutation UpdateProperty($input: UpdatePropertyInput!) {
+  updateProperty(input: $input) {
+    propertyId
+    name
+    averageNoise
+    averageLighting
+    averageComfort
+    averageHealth
+    averageProductivity
+  }
+}
+`;
+export const deleteProperty = `mutation DeleteProperty($input: DeletePropertyInput!) {
+  deleteProperty(input: $input) {
     propertyId
     name
     averageNoise

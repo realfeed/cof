@@ -2,74 +2,110 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+export type CreatePropertyInput = {|
+  propertyId: string,
+  name: string,
+  averageNoise?: ?number,
+  averageLighting?: ?number,
+  averageComfort?: ?number,
+  averageHealth?: ?number,
+  averageProductivity?: ?number,
+|};
+
+export type UpdatePropertyInput = {|
+  propertyId: string,
+  name?: ?string,
+  averageNoise?: ?number,
+  averageLighting?: ?number,
+  averageComfort?: ?number,
+  averageHealth?: ?number,
+  averageProductivity?: ?number,
+|};
+
+export type DeletePropertyInput = {|
+  propertyId: string,
+|};
+
+export type TablePropertyFilterInput = {|
+  propertyId?: ?TableStringFilterInput,
+  name?: ?TableStringFilterInput,
+  averageNoise?: ?TableFloatFilterInput,
+  averageLighting?: ?TableFloatFilterInput,
+  averageComfort?: ?TableFloatFilterInput,
+  averageHealth?: ?TableFloatFilterInput,
+  averageProductivity?: ?TableFloatFilterInput,
+|};
+
+export type TableStringFilterInput = {|
+  ne?: ?string,
+  eq?: ?string,
+  le?: ?string,
+  lt?: ?string,
+  ge?: ?string,
+  gt?: ?string,
+  contains?: ?string,
+  notContains?: ?string,
+  between?: ?Array< ?string >,
+  beginsWith?: ?string,
+|};
+
+export type TableFloatFilterInput = {|
+  ne?: ?number,
+  eq?: ?number,
+  le?: ?number,
+  lt?: ?number,
+  ge?: ?number,
+  gt?: ?number,
+  contains?: ?number,
+  notContains?: ?number,
+  between?: ?Array< ?number >,
+|};
+
 export type CreateConversationMutationVariables = {|
   createdAt?: ?string,
   name: string,
 |};
 
 export type CreateConversationMutation = {|
-  // Create a Conversation. Use some of the cooked in template functions for UUID and DateTime.
   createConversation: ? {|
     __typename: "Conversation",
-    // The originating author of the conversation.
     origin: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
       |},
     |},
-    // The Conversation's timestamp.
     createdAt: ?string,
-    // A unique identifier for the Conversation.
     ConversationId: string,
-    // The Conversation's messages.
     messages: ? {|
       __typename: string,
       messages: ? Array<? {|
         __typename: string,
-        // The message content.
         content: string,
-        // The id of the Conversation this message belongs to. This is the table primary key.
         conversationId: string,
-        // The message timestamp. This is also the table sort key.
         createdAt: ?string,
-        // Generated id for a message -- read-only
         messageId: string,
-        // Flag denoting if this message has been accepted by the server or not.
         isSent: ?boolean,
         sender: ?string,
       |} >,
       nextToken: ?string,
     |},
-    // The Conversation's name = initiating feedback.
     name: ?string,
-    // The sentiment score for the initial feedback provided.
     sentiment: ?number,
-    // The topic classification for the initial feedback provided.
     classification: ?string,
-    // The iBeacon "major" and "minor" attributes for strongest signal to the initial feedback.
     major: ?number,
     minor: ?number,
-    // Latitude of iBeacon for strongest signal to the initial feedback.
     latitude: ?number,
-    // Longitude of iBeacon for strongest signal to the initial feedback.
     longitude: ?number,
-    // Property address to the initial feedback.
     PropertyId: ?string,
   |},
 |};
@@ -82,57 +118,38 @@ export type CreateMessageMutationVariables = {|
 |};
 
 export type CreateMessageMutation = {|
-  // Create a message in a Conversation.
   createMessage: ? {|
     __typename: "Message",
-    // The author object. Note: `authorId` is only available because we list it in `extraAttributes` in `Conversation.messages`
     author: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
       |},
     |},
-    // The message content.
     content: string,
-    // The id of the Conversation this message belongs to. This is the table primary key.
     conversationId: string,
-    // The message timestamp. This is also the table sort key.
     createdAt: ?string,
-    // Generated id for a message -- read-only
     messageId: string,
-    // Flag denoting if this message has been accepted by the server or not.
     isSent: ?boolean,
     recipient: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
@@ -148,18 +165,12 @@ export type CreateUserMutationVariables = {|
 |};
 
 export type CreateUserMutation = {|
-  // Put a single value of type 'User'. If an item does not exist with the same key the item will be created. If there exists an item at that key already, it will be updated.
   createUser: ? {|
     __typename: "User",
-    // A unique identifier for the user.
     cognitoId: string,
-    // Generated id for a user. read-only
     userId: string,
-    // The username
     username: string,
-    // The type of user - either app or admin
     userType: string,
-    // An admin user's registered properties
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -169,7 +180,6 @@ export type CreateUserMutation = {|
         userId: string,
       |} >,
     |},
-    // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
     conversations: ? {|
       __typename: string,
       nextToken: ?string,
@@ -189,7 +199,6 @@ export type CreateUserConversationsMutationVariables = {|
 |};
 
 export type CreateUserConversationsMutation = {|
-  // Put a single value of type 'UserConversations'. If an item does not exist with the same key the item will be created. If there exists an item at that key already, it will be updated.
   createUserConversations: ? {|
     __typename: "UserConversations",
     associated: ? Array<? {|
@@ -201,96 +210,62 @@ export type CreateUserConversationsMutation = {|
       |} >,
       conversation: ? {|
         __typename: string,
-        // The Conversation's timestamp.
         createdAt: ?string,
-        // A unique identifier for the Conversation.
         ConversationId: string,
-        // The Conversation's name = initiating feedback.
         name: ?string,
-        // The sentiment score for the initial feedback provided.
         sentiment: ?number,
-        // The topic classification for the initial feedback provided.
         classification: ?string,
-        // The iBeacon "major" and "minor" attributes for strongest signal to the initial feedback.
         major: ?number,
         minor: ?number,
-        // Latitude of iBeacon for strongest signal to the initial feedback.
         latitude: ?number,
-        // Longitude of iBeacon for strongest signal to the initial feedback.
         longitude: ?number,
-        // Property address to the initial feedback.
         PropertyId: ?string,
       |},
       conversationId: string,
       user: ? {|
         __typename: string,
-        // A unique identifier for the user.
         cognitoId: string,
-        // Generated id for a user. read-only
         userId: string,
-        // The username
         username: string,
-        // The type of user - either app or admin
         userType: string,
       |},
       userId: string,
     |} >,
     conversation: ? {|
       __typename: string,
-      // The originating author of the conversation.
       origin: ? {|
         __typename: string,
-        // A unique identifier for the user.
         cognitoId: string,
-        // Generated id for a user. read-only
         userId: string,
-        // The username
         username: string,
-        // The type of user - either app or admin
         userType: string,
       |},
-      // The Conversation's timestamp.
       createdAt: ?string,
-      // A unique identifier for the Conversation.
       ConversationId: string,
-      // The Conversation's messages.
       messages: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // The Conversation's name = initiating feedback.
       name: ?string,
-      // The sentiment score for the initial feedback provided.
       sentiment: ?number,
-      // The topic classification for the initial feedback provided.
       classification: ?string,
-      // The iBeacon "major" and "minor" attributes for strongest signal to the initial feedback.
       major: ?number,
       minor: ?number,
-      // Latitude of iBeacon for strongest signal to the initial feedback.
       latitude: ?number,
-      // Longitude of iBeacon for strongest signal to the initial feedback.
       longitude: ?number,
-      // Property address to the initial feedback.
       PropertyId: ?string,
     |},
     conversationId: string,
     user: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
@@ -301,19 +276,48 @@ export type CreateUserConversationsMutation = {|
 |};
 
 export type CreatePropertyMutationVariables = {|
-  propertyId: string,
-  name: string,
+  input: CreatePropertyInput,
 |};
 
 export type CreatePropertyMutation = {|
-  // create a property
   createProperty: ? {|
     __typename: "Property",
-    // The unique identifier for the Property. This will be the geoAddr
     propertyId: string,
-    // Human-readable name of the property
     name: string,
-    // Summary performance indicators.
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
+  |},
+|};
+
+export type UpdatePropertyMutationVariables = {|
+  input: UpdatePropertyInput,
+|};
+
+export type UpdatePropertyMutation = {|
+  updateProperty: ? {|
+    __typename: "Property",
+    propertyId: string,
+    name: string,
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
+  |},
+|};
+
+export type DeletePropertyMutationVariables = {|
+  input: DeletePropertyInput,
+|};
+
+export type DeletePropertyMutation = {|
+  deleteProperty: ? {|
+    __typename: "Property",
+    propertyId: string,
+    name: string,
     averageNoise: ?number,
     averageLighting: ?number,
     averageComfort: ?number,
@@ -329,57 +333,38 @@ export type AllMessageQueryVariables = {|
 |};
 
 export type AllMessageQuery = {|
-  // Scan through all values of type 'Message'. Use the 'after' and 'before' arguments with the 'nextToken' returned by the 'MessageConnection' result to fetch pages.
   allMessage: ? Array<? {|
     __typename: "Message",
-    // The author object. Note: `authorId` is only available because we list it in `extraAttributes` in `Conversation.messages`
     author: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
       |},
     |},
-    // The message content.
     content: string,
-    // The id of the Conversation this message belongs to. This is the table primary key.
     conversationId: string,
-    // The message timestamp. This is also the table sort key.
     createdAt: ?string,
-    // Generated id for a message -- read-only
     messageId: string,
-    // Flag denoting if this message has been accepted by the server or not.
     isSent: ?boolean,
     recipient: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
@@ -396,42 +381,27 @@ export type AllMessageConnectionQueryVariables = {|
 |};
 
 export type AllMessageConnectionQuery = {|
-  // Scan through all values of type 'MessageConnection'. Use the 'after' and 'before' arguments with the 'nextToken' returned by the 'MessageConnectionConnection' result to fetch pages.
   allMessageConnection: ? {|
     __typename: "MessageConnection",
     messages: ? Array<? {|
       __typename: string,
-      // The author object. Note: `authorId` is only available because we list it in `extraAttributes` in `Conversation.messages`
       author: ? {|
         __typename: string,
-        // A unique identifier for the user.
         cognitoId: string,
-        // Generated id for a user. read-only
         userId: string,
-        // The username
         username: string,
-        // The type of user - either app or admin
         userType: string,
       |},
-      // The message content.
       content: string,
-      // The id of the Conversation this message belongs to. This is the table primary key.
       conversationId: string,
-      // The message timestamp. This is also the table sort key.
       createdAt: ?string,
-      // Generated id for a message -- read-only
       messageId: string,
-      // Flag denoting if this message has been accepted by the server or not.
       isSent: ?boolean,
       recipient: ? {|
         __typename: string,
-        // A unique identifier for the user.
         cognitoId: string,
-        // Generated id for a user. read-only
         userId: string,
-        // The username
         username: string,
-        // The type of user - either app or admin
         userType: string,
       |},
       sender: ?string,
@@ -450,54 +420,36 @@ export type AllMessageFromQueryVariables = {|
 export type AllMessageFromQuery = {|
   allMessageFrom: ? Array<? {|
     __typename: "Message",
-    // The author object. Note: `authorId` is only available because we list it in `extraAttributes` in `Conversation.messages`
     author: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
       |},
     |},
-    // The message content.
     content: string,
-    // The id of the Conversation this message belongs to. This is the table primary key.
     conversationId: string,
-    // The message timestamp. This is also the table sort key.
     createdAt: ?string,
-    // Generated id for a message -- read-only
     messageId: string,
-    // Flag denoting if this message has been accepted by the server or not.
     isSent: ?boolean,
     recipient: ? {|
       __typename: string,
-      // A unique identifier for the user.
       cognitoId: string,
-      // Generated id for a user. read-only
       userId: string,
-      // The username
       username: string,
-      // The type of user - either app or admin
       userType: string,
-      // An admin user's registered properties
       properties: ? {|
         __typename: string,
         nextToken: ?string,
       |},
-      // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
       conversations: ? {|
         __typename: string,
         nextToken: ?string,
@@ -513,18 +465,12 @@ export type AllUserQueryVariables = {|
 |};
 
 export type AllUserQuery = {|
-  // Scan through all values of type 'User'. Use the 'after' and 'before' arguments with the 'nextToken' returned by the 'UserConnection' result to fetch pages.
   allUser: ? Array<? {|
     __typename: "User",
-    // A unique identifier for the user.
     cognitoId: string,
-    // Generated id for a user. read-only
     userId: string,
-    // The username
     username: string,
-    // The type of user - either app or admin
     userType: string,
-    // An admin user's registered properties
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -534,7 +480,6 @@ export type AllUserQuery = {|
         userId: string,
       |} >,
     |},
-    // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
     conversations: ? {|
       __typename: string,
       nextToken: ?string,
@@ -548,18 +493,12 @@ export type AllUserQuery = {|
 |};
 
 export type MeQuery = {|
-  // Get my user.
   me: ? {|
     __typename: "User",
-    // A unique identifier for the user.
     cognitoId: string,
-    // Generated id for a user. read-only
     userId: string,
-    // The username
     username: string,
-    // The type of user - either app or admin
     userType: string,
-    // An admin user's registered properties
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -569,7 +508,6 @@ export type MeQuery = {|
         userId: string,
       |} >,
     |},
-    // An app user's enrolled Conversations. This is an interesting case. This is an interesting pagination case.
     conversations: ? {|
       __typename: string,
       nextToken: ?string,
@@ -590,15 +528,115 @@ export type AllPropertyQueryVariables = {|
 export type AllPropertyQuery = {|
   allProperty: ? Array<? {|
     __typename: "Property",
-    // The unique identifier for the Property. This will be the geoAddr
     propertyId: string,
-    // Human-readable name of the property
     name: string,
-    // Summary performance indicators.
     averageNoise: ?number,
     averageLighting: ?number,
     averageComfort: ?number,
     averageHealth: ?number,
     averageProductivity: ?number,
   |} >,
+|};
+
+export type GetPropertyQueryVariables = {|
+  propertyId: string,
+|};
+
+export type GetPropertyQuery = {|
+  getProperty: ? {|
+    __typename: "Property",
+    propertyId: string,
+    name: string,
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
+  |},
+|};
+
+export type ListPropertiesQueryVariables = {|
+  filter?: ?TablePropertyFilterInput,
+  limit?: ?number,
+  nextToken?: ?string,
+|};
+
+export type ListPropertiesQuery = {|
+  listProperties: ? {|
+    __typename: "PropertyConnection",
+    items: ? Array<? {|
+      __typename: string,
+      propertyId: string,
+      name: string,
+      averageNoise: ?number,
+      averageLighting: ?number,
+      averageComfort: ?number,
+      averageHealth: ?number,
+      averageProductivity: ?number,
+    |} >,
+    nextToken: ?string,
+  |},
+|};
+
+export type OnCreatePropertySubscriptionVariables = {|
+  propertyId?: ?string,
+  name?: ?string,
+  averageNoise?: ?number,
+  averageLighting?: ?number,
+  averageComfort?: ?number,
+|};
+
+export type OnCreatePropertySubscription = {|
+  onCreateProperty: ? {|
+    __typename: "Property",
+    propertyId: string,
+    name: string,
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
+  |},
+|};
+
+export type OnUpdatePropertySubscriptionVariables = {|
+  propertyId?: ?string,
+  name?: ?string,
+  averageNoise?: ?number,
+  averageLighting?: ?number,
+  averageComfort?: ?number,
+|};
+
+export type OnUpdatePropertySubscription = {|
+  onUpdateProperty: ? {|
+    __typename: "Property",
+    propertyId: string,
+    name: string,
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
+  |},
+|};
+
+export type OnDeletePropertySubscriptionVariables = {|
+  propertyId?: ?string,
+  name?: ?string,
+  averageNoise?: ?number,
+  averageLighting?: ?number,
+  averageComfort?: ?number,
+|};
+
+export type OnDeletePropertySubscription = {|
+  onDeleteProperty: ? {|
+    __typename: "Property",
+    propertyId: string,
+    name: string,
+    averageNoise: ?number,
+    averageLighting: ?number,
+    averageComfort: ?number,
+    averageHealth: ?number,
+    averageProductivity: ?number,
+  |},
 |};

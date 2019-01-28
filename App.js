@@ -7,12 +7,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
+import {AppRegistry, Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
-import {createStackNavigator, createAppNavigator} from 'react-navigation';
-
-import HomeScreen from './src/components/Home';
-import NewLocationScreen from './src/components/NewLocation';
+import AppContainer from './src/components/StackNavigator'
 
 import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
@@ -27,14 +24,14 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-const MainNavigator = createStackNavigator({
-  Home: HomeScreen,
-  NewLocation: NewLocationScreen,
-//  Feedback: ListFeedbackScreen,
-//  NewFeedback: NewFeedbackScreen,
-//  Messages: MessagingScreen,
-});
+type Props = {};
 
-const App = createAppNavigator(MainNavigator);
+class App extends Component<Props> {
+  render() {
+    return (
+      <AppContainer />
+    );
+  }
+}
 
 export default withAuthenticator(App, true);

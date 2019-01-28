@@ -169,3 +169,34 @@ export const allProperty = `query AllProperty($userId: ID!, $userType: String!) 
   }
 }
 `;
+export const getProperty = `query GetProperty($propertyId: String!) {
+  getProperty(propertyId: $propertyId) {
+    propertyId
+    name
+    averageNoise
+    averageLighting
+    averageComfort
+    averageHealth
+    averageProductivity
+  }
+}
+`;
+export const listProperties = `query ListProperties(
+  $filter: TablePropertyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProperties(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      propertyId
+      name
+      averageNoise
+      averageLighting
+      averageComfort
+      averageHealth
+      averageProductivity
+    }
+    nextToken
+  }
+}
+`;

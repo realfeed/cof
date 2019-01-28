@@ -20,8 +20,8 @@ const dataB = [
 ];
 
 const width = 500;
-const height = 500;
-const padding = { top: 50, bottom: 50, left: 20, right: 20 };
+const height = 300;
+const padding = { top: 10, bottom: 10, left: 20, right: 20 };
 
 export default class Chart extends Component{
   render() {
@@ -39,7 +39,7 @@ export default class Chart extends Component{
           style={{ data: { width: 50 }, labels: { fontSize: 20, fill:"black" } }}
         >
           <VictoryBar
-            style={{ data: { fill: "rgba(229,57,53,0.8)" } }}
+            style={{ data: { fill: "rgba(229,57,53,0.8)" }, text: { color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" } }}
             data={dataA}
             y={(data) => (-Math.abs(data.y))}
             labels={(data) => {
@@ -49,10 +49,10 @@ export default class Chart extends Component{
                 return `-${data.y}`;
               }
             }}
-            barRatio = {10}
+            barRatio = {6}
           />
           <VictoryBar
-            style={{ data: { fill: "rgba(30,136,229,0.8)" } }}
+            style={{ data: { fill: "rgba(30,136,229,0.8)" }, text: { color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" } }}
             data={dataB}
             labels={(data) =>
               {if(data.y===0){
@@ -61,7 +61,7 @@ export default class Chart extends Component{
                 return `${Math.abs(data.y)}`
               }
             }}
-            barRatio = {10}
+            barRatio = {6}
           />
         </VictoryStack>
         <VictoryAxis dependentAxis
@@ -71,7 +71,7 @@ export default class Chart extends Component{
           style={{
             axis: { stroke: "transparent" },
             ticks: { stroke: "transparent" },
-            tickLabels: { fontSize: 16, fill: "transparent" }
+            tickLabels: { color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" , fill: "transparent" }
           }}
         />
       </Svg>
