@@ -2,11 +2,12 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import HomeScreen from './HomeScreen';
 import NewLocationScreen from './NewLocationScreen';
+import ListFeedbackScreen from './ListFeedbackScreen';
 
 const StackNavigator = createStackNavigator({
   Home: HomeScreen,
   NewLocation: NewLocationScreen,
-//  Feedback: ListFeedbackScreen,
+  Conversations: ListFeedbackScreen,
 //  NewFeedback: NewFeedbackScreen,
 //  Messages: MessagingScreen,
   },

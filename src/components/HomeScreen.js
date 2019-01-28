@@ -69,7 +69,8 @@ export default class HomeScreen extends Component<Props> {
           <Button
             style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
             upperCase={false}
-            icon="announcement">
+            icon="announcement"
+            onPress={()=> this.props.navigation.navigate("Conversations")}>
           </Button>
         </View>
       </React.Fragment>

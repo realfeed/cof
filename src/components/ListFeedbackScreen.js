@@ -5,17 +5,12 @@ import { StackNavigator } from 'react-navigation';
 
 import { Button } from 'react-native-material-ui';
 
-import Mapbox from '@mapbox/react-native-mapbox-gl';
-import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
-
-Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
-
 import TableView from 'react-native-tableview';
 import Me from '../../me';
 
 const { Section, Item } = TableView
 
-export default class NewLocationScreen extends Component<Props> {
+export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,21 +23,12 @@ export default class NewLocationScreen extends Component<Props> {
   render() {
     return (
       <React.Fragment>
-        <View style={styles.container}>
-          <Mapbox.MapView
-          styleURL={Mapbox.StyleURL.Street}
-          zoomLevel={15}
-          centerCoordinate={[11.256, 43.770]}
-          style={styles.container}>
-          </Mapbox.MapView>
-        </View>
         <Button
-        iconLeft
-        style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
-        text="Add Location"
-        upperCase={false}
-        icon="add"
-        onPress={()=> this.props.navigation.navigate("Home")}>
+          iconLeft
+          style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
+          text="New Feedback"
+          upperCase={false}
+          icon="add">
         </Button>
         <TableView
           style={styles.container}
@@ -59,7 +45,7 @@ export default class NewLocationScreen extends Component<Props> {
           tableViewStyle={TableView.Consts.Style.Grouped}
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
-          <Section label="Nearby Locations">
+          <Section label="Conversations">
             <Item value="1" onPress={() => true}>
               {this.state.myBuildings[0].propertyId}
             </Item>
