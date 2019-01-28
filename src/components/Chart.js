@@ -20,7 +20,7 @@ const dataB = [
 ];
 
 const width = 500;
-const height = 250;
+const height = 260;
 const padding = { top: 10, bottom: 10, left: 20, right: 20 };
 
 export default class Chart extends Component{
