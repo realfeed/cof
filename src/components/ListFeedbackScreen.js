@@ -86,7 +86,7 @@ const styles = ({
     flexWrap: "wrap",
     alignItems: "flex-start",
     flexDirection: "row",
-    margin: 25,
+    margin: 20,
     backgroundColor: "rgba(0,0,0,0.8)",
     borderRadius: 5,
   }
