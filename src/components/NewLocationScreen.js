@@ -8,6 +8,8 @@ import { Button } from 'react-native-material-ui';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 
+Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
+
 import TableView from 'react-native-tableview';
 import Me from '../../me';
 
@@ -24,25 +26,24 @@ export default class NewLocationScreen extends Component<Props> {
   static navigationOptions = { header:null};
 
   render() {
-    const {navigate} = this.props.navigation;
     return (
       <React.Fragment>
-      <Button
-      iconLeft
-      style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
-      text="View Locations"
-      upperCase={false}
-      icon="home"
-      onPress={()=> navigate("Home")}>
-      </Button>
         <View style={styles.container}>
           <Mapbox.MapView
           styleURL={Mapbox.StyleURL.Street}
           zoomLevel={15}
           centerCoordinate={[11.256, 43.770]}
-          style={{ flex: 1 }}>
+          style={styles.container}>
           </Mapbox.MapView>
         </View>
+        <Button
+        iconLeft
+        style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
+        text="View Locations"
+        upperCase={false}
+        icon="home"
+        onPress={()=> this.props.navigation.navigate("Home")}>
+        </Button>
         <TableView
           style={styles.container}
           textColor="black"

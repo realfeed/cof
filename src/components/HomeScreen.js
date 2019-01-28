@@ -24,7 +24,6 @@ export default class HomeScreen extends Component<Props> {
   static navigationOptions = { header:null};
 
   render() {
-    const {navigate} = this.props.navigation;
     return (
       <React.Fragment>
         <Chart />
@@ -34,7 +33,7 @@ export default class HomeScreen extends Component<Props> {
         text="New Location"
         upperCase={false}
         icon="add"
-        onPress={()=> navigate("NewLocation")}>
+        onPress={()=> this.props.navigation.navigate("NewLocation")}>
         </Button>
         <TableView
           style={styles.container}

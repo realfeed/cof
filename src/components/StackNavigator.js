@@ -11,7 +11,7 @@ const StackNavigator = createStackNavigator({
 //  Messages: MessagingScreen,
   },
   {
-  initialRouteName: 'Home',
+  initialRouteName: "Home",
   }
 );
 
