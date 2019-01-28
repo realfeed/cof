@@ -14,7 +14,7 @@ export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myBuildings: Me["data"]["me"]["properties"]["userProperties"]
+      myConversations: Me["data"]["me"]["conversations"]["userConversations"]
     }
   }
 
@@ -41,16 +41,21 @@ export default class HomeScreen extends Component<Props> {
           fontFamily="Helvetica Neue"
           fontSize={15}
           allowsToggle
-          selectedValue={this.state.myBuildings[0].propertyId}
           tableViewStyle={TableView.Consts.Style.Grouped}
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
-          <Section label="Conversations">
+          <Section arrow label="Conversations">
             <Item value="1" onPress={() => true}>
-              {this.state.myBuildings[0].propertyId}
+              {this.state.myConversations[0].conversationId}
             </Item>
             <Item value="2" onPress={() => true}>
-              {this.state.myBuildings[1].propertyId}
+              {this.state.myConversations[1].conversationId}
+            </Item>
+            <Item value="2" onPress={() => true}>
+              {this.state.myConversations[2].conversationId}
+            </Item>
+            <Item value="2" onPress={() => true}>
+              {this.state.myConversations[3].conversationId}
             </Item>
           </Section>
         </TableView>
