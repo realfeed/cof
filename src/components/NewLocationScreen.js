@@ -68,6 +68,19 @@ export default class NewLocationScreen extends Component<Props> {
             </Item>
           </Section>
         </TableView>
+        <View style={styles.wrapper}>
+          <Button
+            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
+            upperCase={false}
+            icon="home"
+            onPress={()=> this.props.navigation.navigate("Home")}>
+          </Button>
+          <Button
+            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
+            upperCase={false}
+            icon="announcement">
+          </Button>
+        </View>
       </React.Fragment>
     );
   }
@@ -75,6 +88,12 @@ export default class NewLocationScreen extends Component<Props> {
 
 const styles = ({
   container: {
-      flex: 1
+      flex: 1,
+  },
+  wrapper: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row",
+    margin: 18
   }
 });

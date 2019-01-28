@@ -20,7 +20,7 @@ const dataB = [
 ];
 
 const width = 500;
-const height = 300;
+const height = 250;
 const padding = { top: 10, bottom: 10, left: 20, right: 20 };
 
 export default class Chart extends Component{
@@ -49,7 +49,7 @@ export default class Chart extends Component{
                 return `-${data.y}`;
               }
             }}
-            barRatio = {6}
+            barRatio = {1}
           />
           <VictoryBar
             style={{ data: { fill: "rgba(30,136,229,0.8)" }, text: { color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" } }}
@@ -61,7 +61,7 @@ export default class Chart extends Component{
                 return `${Math.abs(data.y)}`
               }
             }}
-            barRatio = {6}
+            barRatio = {1}
           />
         </VictoryStack>
         <VictoryAxis dependentAxis

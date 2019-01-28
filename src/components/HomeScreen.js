@@ -28,12 +28,12 @@ export default class HomeScreen extends Component<Props> {
       <React.Fragment>
         <Chart />
         <Button
-        iconLeft
-        style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
-        text="New Location"
-        upperCase={false}
-        icon="add"
-        onPress={()=> this.props.navigation.navigate("NewLocation")}>
+          iconLeft
+          style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
+          text="New Location"
+          upperCase={false}
+          icon="add"
+          onPress={()=> this.props.navigation.navigate("NewLocation")}>
         </Button>
         <TableView
           style={styles.container}
@@ -59,6 +59,19 @@ export default class HomeScreen extends Component<Props> {
             </Item>
           </Section>
         </TableView>
+        <View style={styles.wrapper}>
+          <Button
+            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
+            upperCase={false}
+            icon="home"
+            onPress={()=> this.props.navigation.navigate("Home")}>
+          </Button>
+          <Button
+            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
+            upperCase={false}
+            icon="announcement">
+          </Button>
+        </View>
       </React.Fragment>
     );
   }
@@ -67,5 +80,11 @@ export default class HomeScreen extends Component<Props> {
 const styles = ({
   container: {
       flex: 1,
+  },
+  wrapper: {
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    flexDirection: "row",
+    margin: 18
   }
 });
