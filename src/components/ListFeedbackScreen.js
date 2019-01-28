@@ -25,7 +25,7 @@ export default class HomeScreen extends Component<Props> {
       <React.Fragment>
         <Button
           iconLeft
-          style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 165, margin: 18, borderRadius: 5 } }}
+          style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(0,0,0,0.8)", height: 50, margin: 18, borderRadius: 5 } }}
           text="New Feedback"
           upperCase={false}
           icon="add">
@@ -61,16 +61,16 @@ export default class HomeScreen extends Component<Props> {
         </TableView>
         <View style={styles.wrapper}>
           <Button
-            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
+            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}
             upperCase={false}
             icon="home"
             onPress={()=> this.props.navigation.navigate("Home")}>
           </Button>
           <Button
-            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(249,144,0,0.9)", height: 50, width: 130, margin: 18, borderRadius: 5 } }}
+            style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}
             upperCase={false}
             icon="announcement"
-            onPress={()=> this.props.navigation.navigate("Conversations")}>>
+            onPress={()=> this.props.navigation.navigate("Conversations")}>
           </Button>
         </View>
       </React.Fragment>
@@ -86,6 +86,8 @@ const styles = ({
     flexWrap: "wrap",
     alignItems: "flex-start",
     flexDirection: "row",
-    margin: 18
+    margin: 25,
+    backgroundColor: "rgba(0,0,0,0.8)",
+    borderRadius: 5,
   }
 });
