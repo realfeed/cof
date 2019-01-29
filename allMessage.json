@@ -1,0 +1,119 @@
+{
+  "data": {
+    "AllMessage": [{
+        "author": {
+          "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+          "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+          "username": "aidanparkinson",
+          "userType": "occupant",
+        },
+        "content": "I keep missing phone calls using the new Skype headsets!",
+        "conversationId": "8BF10A9E23B5450FDBEA77F030DD3825",
+        "createdAt": 1548774636,
+        "messageId": "64145C8DD6220E860D45B3BD8C4A185F",
+        "isSent": true,
+        "recipient": {
+          "cognitoId": "7cd036ff-25i0-4ba4-aaf8-aa786bea4f8d",
+          "userId": "6BF0415E97F92C0353B9800F68DFFF75",
+          "username": "aidanparkinson_operator",
+          "userType": "operator",
+        },
+        "sender": "COFrn v0.1",
+      },{
+      "author": {
+        "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+        "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+        "username": "aidanparkinson",
+        "userType": "occupant",
+      },
+      "content": "Please can I have my old phone back?",
+      "conversationId": "8BF10A9E23B5450FDBEA77F030DD3825",
+      "createdAt": 1548774968,
+      "messageId": "AA5FA9B8F2857ED8EBAAEFA51AD163DD",
+      "isSent": true,
+      "recipient": {
+        "cognitoId": "7cd036ff-25i0-4ba4-aaf8-aa786bea4f8d",
+        "userId": "6BF0415E97F92C0353B9800F68DFFF75",
+        "username": "aidanparkinson_operator",
+        "userType": "operator",
+      },
+      "sender": "COFrn v0.1",
+    },{
+      "author": {
+        "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+        "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+        "username": "aidanparkinson",
+        "userType": "occupant",
+      },
+      "content": "The breakout space is great for creative conversations",
+      "conversationId": "DD269724E37CB49C99190B3F92D54F7B",
+      "createdAt": 1548775395,
+      "messageId": "B78144789465A36AC4726FC586CBA39E",
+      "isSent": true,
+      "recipient": {
+        "cognitoId": "7cd036ff-25i0-4ba4-aaf8-aa786bea4f8d",
+        "userId": "6BF0415E97F92C0353B9800F68DFFF75",
+        "username": "aidanparkinson_operator",
+        "userType": "operator",
+      },
+      "sender": "COFrn v0.1",
+    },{
+      "author": {
+        "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+        "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+        "username": "aidanparkinson",
+        "userType": "occupant",
+      },
+      "content": "The cafe serves tasty coffee!",
+      "conversationId": "8880DA72F6B0D76B5299AFCC028DC9B3",
+      "createdAt": 1548775416,
+      "messageId": "B78144789465A36AC4726FC586CBA39E",
+      "isSent": true,
+      "recipient": {
+        "cognitoId": "7cd036ff-25i0-4ba4-aaf8-aa786bea4f8d",
+        "userId": "6BF0415E97F92C0353B9800F68DFFF75",
+        "username": "aidanparkinson_operator",
+        "userType": "operator",
+      },
+      "sender": "COFrn v0.1",
+    },{
+      "author": {
+        "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+        "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+        "username": "aidanparkinson",
+        "userType": "occupant",
+      },
+      "content": "Do you think we could order morning coffee delivery?",
+      "conversationId": "8880DA72F6B0D76B5299AFCC028DC9B3",
+      "createdAt": 1548775530,
+      "messageId": "AE81168412BDC50EE6FE053293DD55E4",
+      "isSent": true,
+      "recipient": {
+        "cognitoId": "7cd036ff-25i0-4ba4-aaf8-aa786bea4f8d",
+        "userId": "6BF0415E97F92C0353B9800F68DFFF75",
+        "username": "aidanparkinson_operator",
+        "userType": "operator",
+      },
+      "sender": "COFrn v0.1",
+    },{
+      "author": {
+        "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+        "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+        "username": "aidanparkinson",
+        "userType": "occupant",
+      },
+      "content": "I wish I had my own private office!",
+      "conversationId": "0D3F0E7FB5210DD223FA7B809680592E",
+      "createdAt": 1548775640,
+      "messageId": "2FFFC8298789F9F4A0836CB4C27A5F71",
+      "isSent": true,
+      "recipient": {
+        "cognitoId": "7cd036ff-25i0-4ba4-aaf8-aa786bea4f8d",
+        "userId": "6BF0415E97F92C0353B9800F68DFFF75",
+        "username": "aidanparkinson_operator",
+        "userType": "operator",
+      },
+      "sender": "COFrn v0.1",
+    }]
+  }
+}

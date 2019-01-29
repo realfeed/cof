@@ -2,37 +2,37 @@
   "data": {
     "me": {
       "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
-      "userId": "aidanparkinsonOccupant1",
+      "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
       "username": "aidanparkinson",
       "userType": "occupant",
       "properties": {
         "userProperties": [
           {
             "propertyId": "13 Fitzroy St, Bloomsbury, London W1T 4BQ",
-            "userId": "aidanparkinsonOccupant1"
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3"
           },
           {
             "propertyId": "8 Fitzroy St, Bloomsbury, London W1T 4BQ",
-            "userId": "aidanparkinsonOccupant1"
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3"
           }]
       },
       "conversations": {
         "userConversations": [
           {
-            "conversationId": "I keep missing phone calls using the new Skype headsets!",
-            "userId": "aidanparkinsonOccupant1"
+            "conversationId": "8BF10A9E23B5450FDBEA77F030DD3825",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3"
           },
           {
-            "conversationId": "The breakout space is great for creative conversations",
-            "userId": "aidanparkinsonOccupant1"
+            "conversationId": "DD269724E37CB49C99190B3F92D54F7B",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3"
           },
           {
-            "conversationId": "The cafe serves tasty coffee",
-            "userId": "aidanparkinsonOccupant1"
+            "conversationId": "8880DA72F6B0D76B5299AFCC028DC9B3",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3"
           },
           {
-            "conversationId": "I wish I had my own private office!",
-            "userId": "aidanparkinsonOccupant1"
+            "conversationId": "0D3F0E7FB5210DD223FA7B809680592E",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3"
           }]
       }
     }

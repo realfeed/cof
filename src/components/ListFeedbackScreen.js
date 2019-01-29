@@ -6,7 +6,7 @@ import { StackNavigator } from 'react-navigation';
 import { Button } from 'react-native-material-ui';
 
 import TableView from 'react-native-tableview';
-import Me from '../../me';
+import AllMessage from '../../allMessage';
 
 const { Section, Item } = TableView
 
@@ -14,7 +14,7 @@ export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myConversations: Me["data"]["me"]["conversations"]["userConversations"]
+      myConversations: AllMessage["data"]["AllMessage"]
     }
   }
 
@@ -47,16 +47,16 @@ export default class HomeScreen extends Component<Props> {
           onPress={event => console.log(event)}>
           <Section arrow label="Conversations">
             <Item value="1" onPress={() => true}>
-              {this.state.myConversations[0].conversationId}
+              {this.state.myConversations[0].content}
             </Item>
             <Item value="2" onPress={() => true}>
-              {this.state.myConversations[1].conversationId}
+              {this.state.myConversations[2].content}
             </Item>
             <Item value="2" onPress={() => true}>
-              {this.state.myConversations[2].conversationId}
+              {this.state.myConversations[3].content}
             </Item>
             <Item value="2" onPress={() => true}>
-              {this.state.myConversations[3].conversationId}
+              {this.state.myConversations[5].content}
             </Item>
           </Section>
         </TableView>
