@@ -28,7 +28,8 @@ export default class HomeScreen extends Component<Props> {
           style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(0,0,0,0.8)", height: 50, margin: 18, borderRadius: 5 } }}
           text="New Feedback"
           upperCase={false}
-          icon="add">
+          icon="add"
+          onPress={()=> this.props.navigation.navigate("NewFeedback")}>>
         </Button>
         <TableView
           style={styles.container}
