@@ -7,6 +7,7 @@ import { Button } from 'react-native-material-ui';
 
 import TableView from 'react-native-tableview';
 import AllMessage from '../../allMessage';
+import Me from '../../me';
 
 const { Section, Item } = TableView
 
@@ -14,7 +15,8 @@ export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myConversations: AllMessage["data"]["AllMessage"]
+      myConversations: AllMessage["data"]["AllMessage"],
+      myBuildings: Me["data"]["me"]["properties"]["userProperties"]
     }
   }
 
@@ -45,7 +47,7 @@ export default class HomeScreen extends Component<Props> {
           tableViewStyle={TableView.Consts.Style.Grouped}
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
-          <Section arrow label="Conversations">
+          <Section arrow label={this.state.myBuildings[0].propertyId}>
             <Item value="1" onPress={() => true}>
               {this.state.myConversations[0].content}
             </Item>
@@ -53,10 +55,12 @@ export default class HomeScreen extends Component<Props> {
               {this.state.myConversations[2].content}
             </Item>
             <Item value="2" onPress={() => true}>
-              {this.state.myConversations[3].content}
-            </Item>
-            <Item value="2" onPress={() => true}>
               {this.state.myConversations[5].content}
+            </Item>
+          </Section>
+          <Section arrow label={this.state.myBuildings[1].propertyId}>
+            <Item value="2" onPress={() => true}>
+              {this.state.myConversations[3].content}
             </Item>
           </Section>
         </TableView>
