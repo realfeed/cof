@@ -4,13 +4,14 @@ import HomeScreen from './HomeScreen';
 import NewLocationScreen from './NewLocationScreen';
 import ListFeedbackScreen from './ListFeedbackScreen';
 import NewFeedbackScreen from './NewFeedbackScreen';
+import MessagingScreen from './MessagingScreen'
 
 const StackNavigator = createStackNavigator({
   Home: HomeScreen,
   NewLocation: NewLocationScreen,
   Conversations: ListFeedbackScreen,
   NewFeedback: NewFeedbackScreen,
-//  Messages: MessagingScreen,
+  Messages: MessagingScreen,
   },
   {
   initialRouteName: "Home",

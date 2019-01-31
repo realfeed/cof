@@ -15,14 +15,21 @@
             "createdAt": 1548774968,
             "messageId": "AA5FA9B8F2857ED8EBAAEFA51AD163DD",
             "isSent": true,
-            "sender": "COFrn v0.1"
+            "sender": "aidanparkinson"
+          },{
+            "content": "I'm sorry to hear that you are dissatisfied with your experience. By using the Plantronics headsets with Skype for Business we are realising a significant cost saving. Is this a significant problem for you?",
+            "conversationId": "8BF10A9E23B5450FDBEA77F030DD3825",
+            "createdAt": 1548955956,
+            "messageId": "4192EB8E1FBE50C31DA69C51AB1FE484",
+            "isSent": true,
+            "sender": "jasongiddings"
           }
         ],
         "name": "I keep missing phone calls using the new Skype headsets!",
         "sentiment": -0.6,
         "classification": "productivity",
         "PropertyId": "13 Fitzroy St, Bloomsbury, London W1T 4BQ"
-      }
+      },
     ]
   }
 }

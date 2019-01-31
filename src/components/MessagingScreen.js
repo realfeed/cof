@@ -3,33 +3,51 @@ import {Platform, StyleSheet, Text, View, Linking, TextInput} from 'react-native
 
 import { StackNavigator } from 'react-navigation';
 
-import { Button } from 'react-native-material-ui';
+import { Button, Card } from 'react-native-material-ui';
 
 import Form from 'react-native-form';
 
+import GetConversation from '../../getConversation'
+
 export default class NewFeedbackScreen extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      myMessages: GetConversation["data"]["GetConversation"][0]["messages"]
+    }
+  }
 
   static navigationOptions = { header:null};
 
   render() {
     return (
       <React.Fragment>
-        <Button
-          iconLeft
-          style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(0,0,0,0.8)", height: 50, margin: 18, borderRadius: 5 } }}
-          text="Add Feedback"
-          upperCase={false}
-          icon="add"
-          onPress={()=> this.props.navigation.navigate("Conversations")}>
-        </Button>
+        <View style={{ flex:1, margin:20}}>
+          <Card style={{ container: { borderRadius: 5, backgroundColor:"rgba(30,136,229,0.8)" } }}>
+            <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+              {this.state.myMessages[0].sender}
+            </Text >
+            <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
+              {this.state.myMessages[0].content}
+            </Text >
+          </Card>
+          <Card style={{ container: { borderRadius: 5,backgroundColor:"rgba(229,57,53,0.8)"} }}>
+            <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+              {this.state.myMessages[1].sender}
+            </Text >
+            <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
+              {this.state.myMessages[1].content}
+            </Text >
+          </Card>
+        </View>
         <View style={{ margin: 20 }}>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5, flexWrap: "wrap"}}>
-            AN IMPRESSION
+            A MESSAGE
           </Text>
           <Form
             ref="form">
             <View
-              style={styles.container}>
+            style={styles.container}>
               <TextInput
                 type="TextInput"
                 name="feedbackTextInput"
@@ -63,7 +81,7 @@ const styles = ({
       borderRadius: 5,
       borderWidth: 0.4,
       borderColor: "rgba(0,0,0,0.3)",
-      height: 455,
+      height: 100,
   },
   wrapper: {
     flexWrap: "wrap",

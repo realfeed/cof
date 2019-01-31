@@ -48,16 +48,26 @@ export default class HomeScreen extends Component<Props> {
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
           <Section arrow label="Conversations">
-            <Item value="1" detail={this.state.myConversations[0].PropertyId} onPress={() => true}>
+            <Item
+            value="1"
+            detail={this.state.myConversations[0].PropertyId}
+            onPress={()=> this.props.navigation.navigate("Messages")}>
               {this.state.myConversations[0].name}
             </Item>
-            <Item value="2" detail={this.state.myConversations[1].PropertyId} onPress={() => true}>
+            <Item
+            value="2"
+            detail={this.state.myConversations[1].PropertyId}
+            onPress={()=> this.props.navigation.navigate("Messages")}>
               {this.state.myConversations[1].name}
             </Item>
-            <Item value="2" detail={this.state.myConversations[2].PropertyId} onPress={() => true}>
+            <Item value="2"
+            detail={this.state.myConversations[2].PropertyId}
+            onPress={()=> this.props.navigation.navigate("Messages")}>
               {this.state.myConversations[2].name}
             </Item>
-            <Item value="2" detail={this.state.myConversations[3].PropertyId} onPress={() => true}>
+            <Item value="2"
+            detail={this.state.myConversations[3].PropertyId}
+            onPress={()=> this.props.navigation.navigate("Messages")}>
               {this.state.myConversations[3].name}
             </Item>
           </Section>
