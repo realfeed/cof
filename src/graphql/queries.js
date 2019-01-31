@@ -200,3 +200,72 @@ export const listProperties = `query ListProperties(
   }
 }
 `;
+export const getConversation = `query GetConversation($ConversationId: ID!, $createdAt: String!) {
+  getConversation(ConversationId: $ConversationId, createdAt: $createdAt) {
+    origin {
+      cognitoId
+      userId
+      username
+      userType
+      properties {
+        nextToken
+      }
+      conversations {
+        nextToken
+      }
+    }
+    createdAt
+    ConversationId
+    messages {
+      messages {
+        content
+        conversationId
+        createdAt
+        messageId
+        isSent
+        sender
+      }
+      nextToken
+    }
+    name
+    sentiment
+    classification
+    major
+    minor
+    latitude
+    longitude
+    PropertyId
+  }
+}
+`;
+export const listConversations = `query ListConversations(
+  $filter: TableConversationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listConversations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      origin {
+        cognitoId
+        userId
+        username
+        userType
+      }
+      createdAt
+      ConversationId
+      messages {
+        nextToken
+      }
+      name
+      sentiment
+      classification
+      major
+      minor
+      latitude
+      longitude
+      PropertyId
+    }
+    nextToken
+  }
+}
+`;

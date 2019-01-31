@@ -23,16 +23,17 @@ export default class NewFeedbackScreen extends Component<Props> {
           onPress={()=> this.props.navigation.navigate("Conversations")}>
         </Button>
         <View style={{ margin: 20 }}>
-          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5 }}>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5, flexWrap: "wrap"}}>
             AN IMPRESSION
           </Text>
             <Form
               ref="form">
               <View
-                style={styles.container}>
+              style={styles.container}>
                 <TextInput
                   type="TextInput"
                   name="feedbackTextInput"
+                  multiline={true}
                   style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
                 </TextInput>
               </View>

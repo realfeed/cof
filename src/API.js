@@ -26,6 +26,37 @@ export type DeletePropertyInput = {|
   propertyId: string,
 |};
 
+export type CreateConversationInput = {|
+  createdAt: string,
+  ConversationId: string,
+  name?: ?string,
+  sentiment?: ?number,
+  classification?: ?string,
+  major?: ?number,
+  minor?: ?number,
+  latitude?: ?number,
+  longitude?: ?number,
+  PropertyId?: ?string,
+|};
+
+export type UpdateConversationInput = {|
+  createdAt: string,
+  ConversationId: string,
+  name?: ?string,
+  sentiment?: ?number,
+  classification?: ?string,
+  major?: ?number,
+  minor?: ?number,
+  latitude?: ?number,
+  longitude?: ?number,
+  PropertyId?: ?string,
+|};
+
+export type DeleteConversationInput = {|
+  createdAt: string,
+  ConversationId: string,
+|};
+
 export type TablePropertyFilterInput = {|
   propertyId?: ?TableStringFilterInput,
   name?: ?TableStringFilterInput,
@@ -61,53 +92,42 @@ export type TableFloatFilterInput = {|
   between?: ?Array< ?number >,
 |};
 
-export type CreateConversationMutationVariables = {|
-  createdAt?: ?string,
-  name: string,
+export type TableConversationFilterInput = {|
+  createdAt?: ?TableStringFilterInput,
+  ConversationId?: ?TableIDFilterInput,
+  name?: ?TableStringFilterInput,
+  sentiment?: ?TableFloatFilterInput,
+  classification?: ?TableStringFilterInput,
+  major?: ?TableIntFilterInput,
+  minor?: ?TableIntFilterInput,
+  latitude?: ?TableFloatFilterInput,
+  longitude?: ?TableFloatFilterInput,
+  PropertyId?: ?TableStringFilterInput,
 |};
 
-export type CreateConversationMutation = {|
-  createConversation: ? {|
-    __typename: "Conversation",
-    origin: ? {|
-      __typename: string,
-      cognitoId: string,
-      userId: string,
-      username: string,
-      userType: string,
-      properties: ? {|
-        __typename: string,
-        nextToken: ?string,
-      |},
-      conversations: ? {|
-        __typename: string,
-        nextToken: ?string,
-      |},
-    |},
-    createdAt: ?string,
-    ConversationId: string,
-    messages: ? {|
-      __typename: string,
-      messages: ? Array<? {|
-        __typename: string,
-        content: string,
-        conversationId: string,
-        createdAt: ?string,
-        messageId: string,
-        isSent: ?boolean,
-        sender: ?string,
-      |} >,
-      nextToken: ?string,
-    |},
-    name: ?string,
-    sentiment: ?number,
-    classification: ?string,
-    major: ?number,
-    minor: ?number,
-    latitude: ?number,
-    longitude: ?number,
-    PropertyId: ?string,
-  |},
+export type TableIDFilterInput = {|
+  ne?: ?string,
+  eq?: ?string,
+  le?: ?string,
+  lt?: ?string,
+  ge?: ?string,
+  gt?: ?string,
+  contains?: ?string,
+  notContains?: ?string,
+  between?: ?Array< ?string >,
+  beginsWith?: ?string,
+|};
+
+export type TableIntFilterInput = {|
+  ne?: ?number,
+  eq?: ?number,
+  le?: ?number,
+  lt?: ?number,
+  ge?: ?number,
+  gt?: ?number,
+  contains?: ?number,
+  notContains?: ?number,
+  between?: ?Array< ?number >,
 |};
 
 export type CreateMessageMutationVariables = {|
@@ -323,6 +343,150 @@ export type DeletePropertyMutation = {|
     averageComfort: ?number,
     averageHealth: ?number,
     averageProductivity: ?number,
+  |},
+|};
+
+export type CreateConversationMutationVariables = {|
+  input: CreateConversationInput,
+|};
+
+export type CreateConversationMutation = {|
+  createConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
+  |},
+|};
+
+export type UpdateConversationMutationVariables = {|
+  input: UpdateConversationInput,
+|};
+
+export type UpdateConversationMutation = {|
+  updateConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
+  |},
+|};
+
+export type DeleteConversationMutationVariables = {|
+  input: DeleteConversationInput,
+|};
+
+export type DeleteConversationMutation = {|
+  deleteConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
   |},
 |};
 
@@ -578,6 +742,92 @@ export type ListPropertiesQuery = {|
   |},
 |};
 
+export type GetConversationQueryVariables = {|
+  ConversationId: string,
+  createdAt: string,
+|};
+
+export type GetConversationQuery = {|
+  getConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
+  |},
+|};
+
+export type ListConversationsQueryVariables = {|
+  filter?: ?TableConversationFilterInput,
+  limit?: ?number,
+  nextToken?: ?string,
+|};
+
+export type ListConversationsQuery = {|
+  listConversations: ? {|
+    __typename: "ConversationConnection",
+    items: ? Array<? {|
+      __typename: string,
+      origin: ? {|
+        __typename: string,
+        cognitoId: string,
+        userId: string,
+        username: string,
+        userType: string,
+      |},
+      createdAt: ?string,
+      ConversationId: string,
+      messages: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      name: ?string,
+      sentiment: ?number,
+      classification: ?string,
+      major: ?number,
+      minor: ?number,
+      latitude: ?number,
+      longitude: ?number,
+      PropertyId: ?string,
+    |} >,
+    nextToken: ?string,
+  |},
+|};
+
 export type OnCreatePropertySubscriptionVariables = {|
   propertyId?: ?string,
   name?: ?string,
@@ -638,5 +888,161 @@ export type OnDeletePropertySubscription = {|
     averageComfort: ?number,
     averageHealth: ?number,
     averageProductivity: ?number,
+  |},
+|};
+
+export type OnCreateConversationSubscriptionVariables = {|
+  createdAt?: ?string,
+  ConversationId?: ?string,
+  name?: ?string,
+  sentiment?: ?number,
+  classification?: ?string,
+|};
+
+export type OnCreateConversationSubscription = {|
+  onCreateConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
+  |},
+|};
+
+export type OnUpdateConversationSubscriptionVariables = {|
+  createdAt?: ?string,
+  ConversationId?: ?string,
+  name?: ?string,
+  sentiment?: ?number,
+  classification?: ?string,
+|};
+
+export type OnUpdateConversationSubscription = {|
+  onUpdateConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
+  |},
+|};
+
+export type OnDeleteConversationSubscriptionVariables = {|
+  createdAt?: ?string,
+  ConversationId?: ?string,
+  name?: ?string,
+  sentiment?: ?number,
+  classification?: ?string,
+|};
+
+export type OnDeleteConversationSubscription = {|
+  onDeleteConversation: ? {|
+    __typename: "Conversation",
+    origin: ? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: string,
+      userType: string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |},
+    createdAt: ?string,
+    ConversationId: string,
+    messages: ? {|
+      __typename: string,
+      messages: ? Array<? {|
+        __typename: string,
+        content: string,
+        conversationId: string,
+        createdAt: ?string,
+        messageId: string,
+        isSent: ?boolean,
+        sender: ?string,
+      |} >,
+      nextToken: ?string,
+    |},
+    name: ?string,
+    sentiment: ?number,
+    classification: ?string,
+    major: ?number,
+    minor: ?number,
+    latitude: ?number,
+    longitude: ?number,
+    PropertyId: ?string,
   |},
 |};

@@ -1,44 +1,6 @@
 // @flow
 // this is an auto generated file. This will be overwritten
 
-export const createConversation = `mutation CreateConversation($createdAt: String, $name: String!) {
-  createConversation(createdAt: $createdAt, name: $name) {
-    origin {
-      cognitoId
-      userId
-      username
-      userType
-      properties {
-        nextToken
-      }
-      conversations {
-        nextToken
-      }
-    }
-    createdAt
-    ConversationId
-    messages {
-      messages {
-        content
-        conversationId
-        createdAt
-        messageId
-        isSent
-        sender
-      }
-      nextToken
-    }
-    name
-    sentiment
-    classification
-    major
-    minor
-    latitude
-    longitude
-    PropertyId
-  }
-}
-`;
 export const createMessage = `mutation CreateMessage(
   $content: String
   $conversationId: ID!
@@ -214,6 +176,120 @@ export const deleteProperty = `mutation DeleteProperty($input: DeletePropertyInp
     averageComfort
     averageHealth
     averageProductivity
+  }
+}
+`;
+export const createConversation = `mutation CreateConversation($input: CreateConversationInput!) {
+  createConversation(input: $input) {
+    origin {
+      cognitoId
+      userId
+      username
+      userType
+      properties {
+        nextToken
+      }
+      conversations {
+        nextToken
+      }
+    }
+    createdAt
+    ConversationId
+    messages {
+      messages {
+        content
+        conversationId
+        createdAt
+        messageId
+        isSent
+        sender
+      }
+      nextToken
+    }
+    name
+    sentiment
+    classification
+    major
+    minor
+    latitude
+    longitude
+    PropertyId
+  }
+}
+`;
+export const updateConversation = `mutation UpdateConversation($input: UpdateConversationInput!) {
+  updateConversation(input: $input) {
+    origin {
+      cognitoId
+      userId
+      username
+      userType
+      properties {
+        nextToken
+      }
+      conversations {
+        nextToken
+      }
+    }
+    createdAt
+    ConversationId
+    messages {
+      messages {
+        content
+        conversationId
+        createdAt
+        messageId
+        isSent
+        sender
+      }
+      nextToken
+    }
+    name
+    sentiment
+    classification
+    major
+    minor
+    latitude
+    longitude
+    PropertyId
+  }
+}
+`;
+export const deleteConversation = `mutation DeleteConversation($input: DeleteConversationInput!) {
+  deleteConversation(input: $input) {
+    origin {
+      cognitoId
+      userId
+      username
+      userType
+      properties {
+        nextToken
+      }
+      conversations {
+        nextToken
+      }
+    }
+    createdAt
+    ConversationId
+    messages {
+      messages {
+        content
+        conversationId
+        createdAt
+        messageId
+        isSent
+        sender
+      }
+      nextToken
+    }
+    name
+    sentiment
+    classification
+    major
+    minor
+    latitude
+    longitude
+    PropertyId
   }
 }
 `;

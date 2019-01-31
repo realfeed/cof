@@ -50,6 +50,11 @@ export default class HomeScreen extends Component<Props> {
           tableViewStyle={TableView.Consts.Style.Grouped}
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
+          <Section label="Current Location">
+            <Item value="1" onPress={() => true}>
+              {this.state.myBuildings[0].propertyId}
+            </Item>
+          </Section>
           <Section label="Participating Locations">
             <Item value="1" onPress={() => true}>
               {this.state.myBuildings[0].propertyId}

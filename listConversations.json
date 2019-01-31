@@ -1,0 +1,72 @@
+{
+  "data": {
+      "listConversations": {
+        "items": [{
+          "origin": {
+            "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+            "username": "aidanparkinson",
+            "userType": "occupant",
+          },
+          "createdAt": 1548774636,
+          "conversationId": "8BF10A9E23B5450FDBEA77F030DD3825",
+          "messages": {
+            "nextToken": "AA5FA9B8F2857ED8EBAAEFA51AD163DD"
+          },
+          "name": "I keep missing phone calls using the new Skype headsets!",
+          "sentiment": -0.6,
+          "classification":"productivity",
+          "PropertyId": "13 Fitzroy St, Bloomsbury, London W1T 4BQ"
+        },{
+          "origin": {
+            "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+            "username": "aidanparkinson",
+            "userType": "occupant",
+          },
+          "createdAt": 1548775395,
+          "conversationId": "DD269724E37CB49C99190B3F92D54F7B",
+          "messages": {
+            "nextToken": ""
+          },
+          "name": "The breakout space is great for creative conversations",
+          "sentiment": 0.8,
+          "classification":"noise",
+          "PropertyId": "13 Fitzroy St, Bloomsbury, London W1T 4BQ"
+        },{
+          "origin": {
+            "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+            "username": "aidanparkinson",
+            "userType": "occupant",
+          },
+          "createdAt": 1548775416,
+          "conversationId": "8880DA72F6B0D76B5299AFCC028DC9B3",
+          "messages": {
+            "nextToken": "AE81168412BDC50EE6FE053293DD55E4"
+          },
+          "name": "The cafe serves tasty coffee!",
+          "sentiment": 0.75,
+          "classification":"health",
+          "PropertyId": "8 Fitzroy St, Bloomsbury, London W1T 4BQ"
+        },{
+          "origin": {
+            "cognitoId": "5ae753ee-95e9-4ba4-aaf8-aa786bea4f8d",
+            "userId": "B9E916B8142A0175F954F09A9C1ADFA3",
+            "username": "aidanparkinson",
+            "userType": "occupant",
+          },
+          "createdAt": 1548775640,
+          "conversationId": "0D3F0E7FB5210DD223FA7B809680592E",
+          "messages": {
+            "nextToken": ""
+          },
+          "name": "I wish I had my own private office!",
+          "sentiment": -0.3,
+          "classification":"noise",
+          "PropertyId": "13 Fitzroy St, Bloomsbury, London W1T 4BQ"
+        }
+      ]
+    }
+  }
+}

@@ -6,8 +6,7 @@ import { StackNavigator } from 'react-navigation';
 import { Button } from 'react-native-material-ui';
 
 import TableView from 'react-native-tableview';
-import AllMessage from '../../allMessage';
-import Me from '../../me';
+import ListConversations from '../../listConversations';
 
 const { Section, Item } = TableView
 
@@ -15,8 +14,7 @@ export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myConversations: AllMessage["data"]["AllMessage"],
-      myBuildings: Me["data"]["me"]["properties"]["userProperties"]
+      myConversations: ListConversations["data"]["listConversations"]["items"]
     }
   }
 
@@ -37,9 +35,11 @@ export default class HomeScreen extends Component<Props> {
           style={styles.container}
           textColor="black"
           headerTextColor="black"
-          selectedTextColor="rgba(249,144,0,0.9)"
           headerFontFamily="Helvetica Neue"
           headerFontSize={15}
+          detailTextColor="rgba(249,144,0,0.9)"
+          detailFontFamily="Helvetica Neue"
+          detailFontSize={12}
           headerFontWeight="bold"
           fontFamily="Helvetica Neue"
           fontSize={15}
@@ -47,20 +47,18 @@ export default class HomeScreen extends Component<Props> {
           tableViewStyle={TableView.Consts.Style.Grouped}
           tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
           onPress={event => console.log(event)}>
-          <Section arrow label={this.state.myBuildings[0].propertyId}>
-            <Item value="1" onPress={() => true}>
-              {this.state.myConversations[0].content}
+          <Section arrow label="Conversations">
+            <Item value="1" detail={this.state.myConversations[0].PropertyId} onPress={() => true}>
+              {this.state.myConversations[0].name}
             </Item>
-            <Item value="2" onPress={() => true}>
-              {this.state.myConversations[2].content}
+            <Item value="2" detail={this.state.myConversations[1].PropertyId} onPress={() => true}>
+              {this.state.myConversations[1].name}
             </Item>
-            <Item value="2" onPress={() => true}>
-              {this.state.myConversations[5].content}
+            <Item value="2" detail={this.state.myConversations[2].PropertyId} onPress={() => true}>
+              {this.state.myConversations[2].name}
             </Item>
-          </Section>
-          <Section arrow label={this.state.myBuildings[1].propertyId}>
-            <Item value="2" onPress={() => true}>
-              {this.state.myConversations[3].content}
+            <Item value="2" detail={this.state.myConversations[3].PropertyId} onPress={() => true}>
+              {this.state.myConversations[3].name}
             </Item>
           </Section>
         </TableView>
