@@ -7,6 +7,12 @@ import { Button } from 'react-native-material-ui';
 
 import Form from 'react-native-form';
 
+import gql from 'graphql-tag';
+import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+
+import { client } from '../../App'
+import { createConversation } from '../graphql/mutations'
+
 export default class NewFeedbackScreen extends Component<Props> {
 
   static navigationOptions = { header:null};
