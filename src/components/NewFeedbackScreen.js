@@ -13,6 +13,19 @@ import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { client } from '../../App'
 import { createConversation } from '../graphql/mutations'
 
+const submitConversation = (async () => {
+  const result = await client.mutate({
+    mutation: gql(createConversation),
+    variables: {
+      input: {
+        name: 'Use AppSync',
+        description: 'Realtime and Offline',
+      }
+    }
+  });
+  console.log(result.data.createConversation);
+})();
+
 export default class NewFeedbackScreen extends Component<Props> {
   constructor(props) {
     super(props);
