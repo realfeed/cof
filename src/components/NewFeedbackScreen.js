@@ -14,6 +14,19 @@ import { client } from '../../App'
 import { createConversation } from '../graphql/mutations'
 
 export default class NewFeedbackScreen extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      conversationDetails: {
+        "createdAt": 1549549071,
+        "ConversationId": "965a0ccc3b1f065de68b5bdda98ac38d",
+        "name": "tada",
+        "sentiment": 0.9,
+        "classification": "productivity",
+        "propertyId": "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
+      }
+    }
+  }
 
   static navigationOptions = { header:null};
 
