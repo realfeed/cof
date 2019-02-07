@@ -27,7 +27,7 @@ export type DeletePropertyInput = {|
 |};
 
 export type CreateConversationInput = {|
-  createdAt: string,
+  createdAt: number,
   ConversationId: string,
   name?: ?string,
   sentiment?: ?number,
@@ -40,7 +40,7 @@ export type CreateConversationInput = {|
 |};
 
 export type UpdateConversationInput = {|
-  createdAt: string,
+  createdAt: number,
   ConversationId: string,
   name?: ?string,
   sentiment?: ?number,
@@ -53,7 +53,7 @@ export type UpdateConversationInput = {|
 |};
 
 export type DeleteConversationInput = {|
-  createdAt: string,
+  createdAt: number,
   ConversationId: string,
 |};
 
@@ -133,7 +133,7 @@ export type TableIntFilterInput = {|
 export type CreateMessageMutationVariables = {|
   content?: ?string,
   conversationId: string,
-  createdAt: string,
+  createdAt: number,
   messageId: string,
 |};
 
@@ -157,7 +157,7 @@ export type CreateMessageMutation = {|
     |},
     content: string,
     conversationId: string,
-    createdAt: ?string,
+    createdAt: number,
     messageId: string,
     isSent: ?boolean,
     recipient: ? {|
@@ -230,7 +230,7 @@ export type CreateUserConversationsMutation = {|
       |} >,
       conversation: ? {|
         __typename: string,
-        createdAt: ?string,
+        createdAt: number,
         ConversationId: string,
         name: ?string,
         sentiment: ?number,
@@ -260,7 +260,7 @@ export type CreateUserConversationsMutation = {|
         username: string,
         userType: string,
       |},
-      createdAt: ?string,
+      createdAt: number,
       ConversationId: string,
       messages: ? {|
         __typename: string,
@@ -368,7 +368,7 @@ export type CreateConversationMutation = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -376,7 +376,7 @@ export type CreateConversationMutation = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,
@@ -416,7 +416,7 @@ export type UpdateConversationMutation = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -424,7 +424,7 @@ export type UpdateConversationMutation = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,
@@ -464,7 +464,7 @@ export type DeleteConversationMutation = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -472,7 +472,7 @@ export type DeleteConversationMutation = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,
@@ -516,7 +516,7 @@ export type AllMessageQuery = {|
     |},
     content: string,
     conversationId: string,
-    createdAt: ?string,
+    createdAt: number,
     messageId: string,
     isSent: ?boolean,
     recipient: ? {|
@@ -558,7 +558,7 @@ export type AllMessageConnectionQuery = {|
       |},
       content: string,
       conversationId: string,
-      createdAt: ?string,
+      createdAt: number,
       messageId: string,
       isSent: ?boolean,
       recipient: ? {|
@@ -601,7 +601,7 @@ export type AllMessageFromQuery = {|
     |},
     content: string,
     conversationId: string,
-    createdAt: ?string,
+    createdAt: number,
     messageId: string,
     isSent: ?boolean,
     recipient: ? {|
@@ -744,7 +744,7 @@ export type ListPropertiesQuery = {|
 
 export type GetConversationQueryVariables = {|
   ConversationId: string,
-  createdAt: string,
+  createdAt: number,
 |};
 
 export type GetConversationQuery = {|
@@ -765,7 +765,7 @@ export type GetConversationQuery = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -773,7 +773,7 @@ export type GetConversationQuery = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,
@@ -809,7 +809,7 @@ export type ListConversationsQuery = {|
         username: string,
         userType: string,
       |},
-      createdAt: ?string,
+      createdAt: number,
       ConversationId: string,
       messages: ? {|
         __typename: string,
@@ -892,7 +892,7 @@ export type OnDeletePropertySubscription = {|
 |};
 
 export type OnCreateConversationSubscriptionVariables = {|
-  createdAt?: ?string,
+  createdAt: number,
   ConversationId?: ?string,
   name?: ?string,
   sentiment?: ?number,
@@ -917,7 +917,7 @@ export type OnCreateConversationSubscription = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -925,7 +925,7 @@ export type OnCreateConversationSubscription = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,
@@ -944,7 +944,7 @@ export type OnCreateConversationSubscription = {|
 |};
 
 export type OnUpdateConversationSubscriptionVariables = {|
-  createdAt?: ?string,
+  createdAt: number,
   ConversationId?: ?string,
   name?: ?string,
   sentiment?: ?number,
@@ -969,7 +969,7 @@ export type OnUpdateConversationSubscription = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -977,7 +977,7 @@ export type OnUpdateConversationSubscription = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,
@@ -996,7 +996,7 @@ export type OnUpdateConversationSubscription = {|
 |};
 
 export type OnDeleteConversationSubscriptionVariables = {|
-  createdAt?: ?string,
+  createdAt: number,
   ConversationId?: ?string,
   name?: ?string,
   sentiment?: ?number,
@@ -1021,7 +1021,7 @@ export type OnDeleteConversationSubscription = {|
         nextToken: ?string,
       |},
     |},
-    createdAt: ?string,
+    createdAt: number,
     ConversationId: string,
     messages: ? {|
       __typename: string,
@@ -1029,7 +1029,7 @@ export type OnDeleteConversationSubscription = {|
         __typename: string,
         content: string,
         conversationId: string,
-        createdAt: ?string,
+        createdAt: number,
         messageId: string,
         isSent: ?boolean,
         sender: ?string,

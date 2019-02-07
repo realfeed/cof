@@ -4,7 +4,7 @@
 export const createMessage = `mutation CreateMessage(
   $content: String
   $conversationId: ID!
-  $createdAt: String!
+  $createdAt: Int!
   $messageId: ID!
 ) {
   createMessage(

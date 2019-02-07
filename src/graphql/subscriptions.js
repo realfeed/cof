@@ -74,7 +74,7 @@ export const onDeleteProperty = `subscription OnDeleteProperty(
 }
 `;
 export const onCreateConversation = `subscription OnCreateConversation(
-  $createdAt: String
+  $createdAt: Int!
   $ConversationId: ID
   $name: String
   $sentiment: Float
@@ -124,7 +124,7 @@ export const onCreateConversation = `subscription OnCreateConversation(
 }
 `;
 export const onUpdateConversation = `subscription OnUpdateConversation(
-  $createdAt: String
+  $createdAt: Int!
   $ConversationId: ID
   $name: String
   $sentiment: Float
@@ -174,7 +174,7 @@ export const onUpdateConversation = `subscription OnUpdateConversation(
 }
 `;
 export const onDeleteConversation = `subscription OnDeleteConversation(
-  $createdAt: String
+  $createdAt: Int!
   $ConversationId: ID
   $name: String
   $sentiment: Float

@@ -12,16 +12,27 @@ import {AppRegistry, Platform, StyleSheet, Text, View, Linking} from 'react-nati
 import AppContainer from './src/components/StackNavigator'
 
 import Amplify, { Auth } from 'aws-amplify';
-import aws_exports from './aws-exports';
+import awsmobile from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 
-Amplify.configure(aws_exports);
+import gql from 'graphql-tag';
+import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+
+Amplify.configure(awsmobile);
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
+});
+
+const client = new AWSAppSyncClient({
+  url: awsmobile.aws_appsync_graphqlEndpoint,
+  region: awsmobile.aws_appsync_region,
+  auth: {
+    type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
+  }
 });
 
 type Props = {};

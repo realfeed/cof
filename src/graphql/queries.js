@@ -200,7 +200,7 @@ export const listProperties = `query ListProperties(
   }
 }
 `;
-export const getConversation = `query GetConversation($ConversationId: ID!, $createdAt: String!) {
+export const getConversation = `query GetConversation($ConversationId: ID!, $createdAt: Int!) {
   getConversation(ConversationId: $ConversationId, createdAt: $createdAt) {
     origin {
       cognitoId
