@@ -13,24 +13,25 @@ import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { client } from '../../App'
 import { createConversation } from '../graphql/mutations'
 
-const submitConversation = (async () => {
-  console.log("Awaiting mutation")
-  const result = await client.mutate({
-    mutation: gql(createConversation),
-    variables: {
-      input: {
-        createdAt: 1549549071,
-        ConversationId: "965a0ccc3b1f065de68b5bdda98ac38d",
-        name: "tada",
-        sentiment: 0.9,
-        classification: "productivity",
-        PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
+function submitConversation () {
+  (async () => {
+    console.log("Awaiting mutation")
+    const result = await client.mutate({
+      mutation: gql(createConversation),
+      variables: {
+        input: {
+          createdAt: 1549549071,
+          ConversationId: "965a0ccc3b1f065de68b5bdda98ac38d",
+          name: "tada",
+          sentiment: 0.9,
+          classification: "productivity",
+          PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
+        }
       }
-    }
-  });
-  console.log(result.data.createConversation);
-  this.props.navigation.navigate("Conversations");
-})();
+    });
+    console.log(result.data.createConversation);
+  })();
+}
 
 export default class NewFeedbackScreen extends Component<Props> {
 
@@ -45,7 +46,7 @@ export default class NewFeedbackScreen extends Component<Props> {
           text="Add Feedback"
           upperCase={false}
           icon="add"
-          onPress={()=> this.submitConversation }>
+          onPress={()=> submitConversation() }>
         </Button>
         <View style={{ margin: 20 }}>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5, flexWrap: "wrap"}}>
