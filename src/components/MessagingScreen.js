@@ -53,6 +53,7 @@ export default class NewFeedbackScreen extends Component<Props> {
                 name="feedbackTextInput"
                 multiline={true}
                 style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
+                *
               </TextInput>
             </View>
           </Form>

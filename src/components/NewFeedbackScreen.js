@@ -14,32 +14,25 @@ import { client } from '../../App'
 import { createConversation } from '../graphql/mutations'
 
 const submitConversation = (async () => {
+  console.log("Awaiting mutation")
   const result = await client.mutate({
     mutation: gql(createConversation),
     variables: {
       input: {
-        name: 'Use AppSync',
-        description: 'Realtime and Offline',
+        createdAt: 1549549071,
+        ConversationId: "965a0ccc3b1f065de68b5bdda98ac38d",
+        name: "tada",
+        sentiment: 0.9,
+        classification: "productivity",
+        PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
       }
     }
   });
   console.log(result.data.createConversation);
+  this.props.navigation.navigate("Conversations");
 })();
 
 export default class NewFeedbackScreen extends Component<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      conversationDetails: {
-        "createdAt": 1549549071,
-        "ConversationId": "965a0ccc3b1f065de68b5bdda98ac38d",
-        "name": "tada",
-        "sentiment": 0.9,
-        "classification": "productivity",
-        "propertyId": "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
-      }
-    }
-  }
 
   static navigationOptions = { header:null};
 
@@ -52,7 +45,7 @@ export default class NewFeedbackScreen extends Component<Props> {
           text="Add Feedback"
           upperCase={false}
           icon="add"
-          onPress={()=> this.props.navigation.navigate("Conversations")}>
+          onPress={()=> this.submitConversation }>
         </Button>
         <View style={{ margin: 20 }}>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5, flexWrap: "wrap"}}>
@@ -67,6 +60,7 @@ export default class NewFeedbackScreen extends Component<Props> {
                 name="feedbackTextInput"
                 multiline={true}
                 style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
+                *
               </TextInput>
             </View>
           </Form>

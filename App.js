@@ -27,12 +27,13 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-const client = new AWSAppSyncClient({
+export const client = new AWSAppSyncClient({
   url: awsmobile.aws_appsync_graphqlEndpoint,
   region: awsmobile.aws_appsync_region,
   auth: {
     type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
-  }
+    jwtToken: async () => (await Auth.currentSession()).getAccessToken().getJwtToken(),
+  },
 });
 
 type Props = {};

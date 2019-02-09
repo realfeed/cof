@@ -7,11 +7,16 @@ import { Button } from 'react-native-material-ui';
 import { BottomNavigation } from 'react-native-material-ui';
 
 import Chart from './Chart';
+import { client } from '../../App'
 
 import TableView from 'react-native-tableview';
 import Me from '../../me';
 
 const { Section, Item } = TableView
+
+import gql from 'graphql-tag';
+import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+import { listConversations } from '../graphql/queries';
 
 export default class HomeScreen extends Component<Props> {
   constructor(props) {
@@ -20,6 +25,15 @@ export default class HomeScreen extends Component<Props> {
       myBuildings: Me["data"]["me"]["properties"]["userProperties"]
     }
   }
+
+  async componentWillMount() {
+    await client.query({
+      query: gql(listConversations)
+    }).then(({ data: { listConversations } }) => {
+      console.log(listConversations.items);
+    });
+  }
+
 
   static navigationOptions = { header:null};
 
