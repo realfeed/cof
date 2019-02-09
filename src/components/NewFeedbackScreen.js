@@ -12,28 +12,38 @@ import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 
 import { client } from '../../App'
 import { createConversation } from '../graphql/mutations'
-
-function submitConversation () {
-  (async () => {
-    console.log("Awaiting mutation")
-    const result = await client.mutate({
-      mutation: gql(createConversation),
-      variables: {
-        input: {
-          createdAt: 1549549071,
-          ConversationId: "965a0ccc3b1f065de68b5bdda98ac38d",
-          name: "tada",
-          sentiment: 0.9,
-          classification: "productivity",
-          PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
-        }
-      }
-    });
-    console.log(result.data.createConversation);
-  })();
-}
+import EventEmitter from "react-native-md5";
+import md5 from "react-native-md5";
 
 export default class NewFeedbackScreen extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      impression: " ",
+      hex_md5v: md5.hex_md5( Date.now() +"" ),
+      epoch: parseInt(Date.now() /1000, 0),
+    }
+  }
+
+  submitConversation = () => {
+    (async () => {
+      console.log("Awaiting mutation")
+      const result = await client.mutate({
+        mutation: gql(createConversation),
+        variables: {
+          input: {
+            createdAt: this.state.epoch,
+            ConversationId: this.state.hex_md5v,
+            name: this.state.impression,
+            sentiment: 0.3,
+            classification: "productivity",
+            PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
+          }
+        }
+      });
+      console.log(result.data.createConversation);
+    })();
+  }
 
   static navigationOptions = { header:null};
 
@@ -46,7 +56,7 @@ export default class NewFeedbackScreen extends Component<Props> {
           text="Add Feedback"
           upperCase={false}
           icon="add"
-          onPress={()=> submitConversation() }>
+          onPress={()=> this.submitConversation() }>
         </Button>
         <View style={{ margin: 20 }}>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5, flexWrap: "wrap"}}>
@@ -59,8 +69,10 @@ export default class NewFeedbackScreen extends Component<Props> {
               <TextInput
                 type="TextInput"
                 name="feedbackTextInput"
+                id="feedbackTextInput"
                 multiline={true}
-                style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
+                style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}
+                onChangeText={(impression) => {this.setState({impression})} }>
                 *
               </TextInput>
             </View>
