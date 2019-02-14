@@ -54,9 +54,9 @@ export default class HomeScreen extends Component<Props> {
     .then(
       user => {
         console.log(JSON.stringify(user.username, null, 2));
-        this.setState = ({
-         currentUser: JSON.stringify(user.username, null, 2),
-      });
+        this.setState((currentUser) => {
+          return { currentUser: JSON.stringify(user.username, null, 2)}
+        });
       this.myselfResponse();
       console.log("State set");
     })

@@ -53,18 +53,22 @@ class App extends Component<Props> {
 
   submitUser = () => {
     (async () => {
-      console.log("Awaiting mutation")
-      const result = await client.mutate({
-        mutation: gql(createUser),
-        variables: {
-          input: {
-            cognitoId: this.state.currentUser,
-            userId: this.state.hex_md5v,
-            username: this.state.currentUser,
-            userType: "occupant",
+      console.log("Awaiting mutation");
+      alert(this.state.currentUser);
+      console.log(this.state.currentUser);
+      try {
+        const result = await client.mutate({
+          mutation: gql(createUser),
+          variables: {
+            input: {
+              cognitoId: this.state.currentUser,
+              userId: this.state.hex_md5v,
+              username: this.state.currentUser,
+              userType: "occupant",
+            }
           }
-        }
-      });
+        });
+      } catch(error) {console.log(error)}
       console.log(result.data.createUser);
     })();
   }
@@ -94,10 +98,9 @@ class App extends Component<Props> {
       user => {
         alert(JSON.stringify(user.username, null, 2));
         console.log(JSON.stringify(user.username, null, 2));
-        this.setState = ({
-         currentUser: JSON.stringify(user.username, null, 2),
-        });
-        alert(this.state.currentUser);
+        this.setState((currentUser) => {
+          return { currentUser: JSON.stringify(user.username, null, 2)};
+        })
         this.currentUsersResponse();
         console.log("State set");
       })

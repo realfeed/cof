@@ -14,8 +14,43 @@ export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myConversations: ListConversations["data"]["listConversations"]["items"]
+      myConversations: " ",
+      currentUser: " "
     }
+  }
+
+  conversationsResponse = () => {
+    (async () => {
+      console.log("Calling API");
+      console.log(this.state.currentUser);
+      const conversations = await client.query({
+        query: gql(me),
+        variables: { username: this.state.currentUser }
+      });
+      console.log("myself Response");
+            if (conversations.data.listConversations.length == 0) {} else {
+              this.setState({
+                myConversations: conversations.data.listConversations.items,
+              });
+            }
+    })();
+  }
+
+  componentDidMount() {
+    console.log("Requesting current user")
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+    .then(
+      user => {
+        console.log(JSON.stringify(user.username, null, 2));
+        this.setState((currentUser) => {
+          return { currentUser: JSON.stringify(user.username, null, 2)}
+        });
+      this.conversationsResponse();
+      console.log("State set");
+    })
+    .catch(err => console.log(err));
   }
 
   static navigationOptions = { header:null};

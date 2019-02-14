@@ -11,7 +11,7 @@ import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 
 import { client } from '../../App';
-import { createConversation } from '../graphql/mutations';
+import { createUserConversations } from '../graphql/mutations';
 import EventEmitter from "react-native-md5";
 import md5 from "react-native-md5";
 
@@ -22,6 +22,7 @@ export default class NewFeedbackScreen extends Component<Props> {
       impression: " ",
       hex_md5v: md5.hex_md5( Date.now() +"" ),
       epoch: parseInt(Date.now() /1000, 0),
+      currentUser: " ",
     }
   }
 
@@ -29,7 +30,7 @@ export default class NewFeedbackScreen extends Component<Props> {
     (async () => {
       console.log("Awaiting mutation")
       const result = await client.mutate({
-        mutation: gql(createConversation),
+        mutation: gql(createUserConversations),
         variables: {
           input: {
             createdAt: this.state.epoch,
@@ -37,12 +38,51 @@ export default class NewFeedbackScreen extends Component<Props> {
             name: this.state.impression,
             sentiment: 0.3,
             classification: "productivity",
-            PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ"
+            PropertyId: "13 Fitzroy Street, Bloomsbury, London W1T 4BQ",
+            origin: {
+              username: this.state.currentUser,
+              userType: "occupant"
+            }
           }
         }
       });
       console.log(result.data.createConversation);
     })();
+  }
+
+  currentUsersResponse = () => {
+    (async () => {
+      console.log("Calling API");
+      console.log(this.state.currentUser);
+      const currentUsers =  await client.query({
+          query: gql(allUser),
+          variables: { username: this.state.currentUser }
+      });
+      console.log("currentUsers Response");
+      console.log(currentUsers.data.allUser);
+      if (currentUsers.data.allUser.length == 0) {} else {
+        this.setState = ({
+          currentUserID: JSON.stringify(currentUsers.data.allUser[0].userId, null, 2),
+        });
+      }
+    })();
+  }
+
+  componentDidMount() {
+    console.log("Requesting current user")
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+    .then(
+      user => {
+        console.log(JSON.stringify(user.username, null, 2));
+        this.setState((currentUser) => {
+          return { currentUser: JSON.stringify(user.username, null, 2)}
+        });
+      this.currentUsersResponse();
+      console.log("State set");
+    })
+    .catch(err => console.log(err));
   }
 
   static navigationOptions = { header:null};
