@@ -169,7 +169,7 @@ export const allProperty = `query AllProperty($userId: ID!, $userType: String!) 
   }
 }
 `;
-export const getProperty = `query GetProperty($propertyId: String!) {
+export const getProperty = `query GetProperty($propertyId: ID!) {
   getProperty(propertyId: $propertyId) {
     propertyId
     name

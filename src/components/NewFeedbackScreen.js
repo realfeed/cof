@@ -10,8 +10,8 @@ import Form from 'react-native-form';
 import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 
-import { client } from '../../App'
-import { createConversation } from '../graphql/mutations'
+import { client } from '../../App';
+import { createConversation } from '../graphql/mutations';
 import EventEmitter from "react-native-md5";
 import md5 from "react-native-md5";
 

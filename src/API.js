@@ -36,11 +36,11 @@ export type CreateConversationInput = {|
   minor?: ?number,
   latitude?: ?number,
   longitude?: ?number,
-  PropertyId?: ?string,
+  PropertyId: string,
 |};
 
 export type UpdateConversationInput = {|
-  createdAt: number,
+  createdAt?: ?number,
   ConversationId: string,
   name?: ?string,
   sentiment?: ?number,
@@ -144,8 +144,8 @@ export type CreateMessageMutation = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -164,8 +164,8 @@ export type CreateMessageMutation = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -189,8 +189,8 @@ export type CreateUserMutation = {|
     __typename: "User",
     cognitoId: string,
     userId: string,
-    username: string,
-    userType: string,
+    username: ?string,
+    userType: ?string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -239,15 +239,15 @@ export type CreateUserConversationsMutation = {|
         minor: ?number,
         latitude: ?number,
         longitude: ?number,
-        PropertyId: ?string,
+        PropertyId: string,
       |},
       conversationId: string,
       user: ? {|
         __typename: string,
         cognitoId: string,
         userId: string,
-        username: string,
-        userType: string,
+        username: ?string,
+        userType: ?string,
       |},
       userId: string,
     |} >,
@@ -257,8 +257,8 @@ export type CreateUserConversationsMutation = {|
         __typename: string,
         cognitoId: string,
         userId: string,
-        username: string,
-        userType: string,
+        username: ?string,
+        userType: ?string,
       |},
       createdAt: number,
       ConversationId: string,
@@ -273,15 +273,15 @@ export type CreateUserConversationsMutation = {|
       minor: ?number,
       latitude: ?number,
       longitude: ?number,
-      PropertyId: ?string,
+      PropertyId: string,
     |},
     conversationId: string,
     user: ? {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -357,8 +357,8 @@ export type CreateConversationMutation = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -390,7 +390,7 @@ export type CreateConversationMutation = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};
 
@@ -405,8 +405,8 @@ export type UpdateConversationMutation = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -438,7 +438,7 @@ export type UpdateConversationMutation = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};
 
@@ -453,8 +453,8 @@ export type DeleteConversationMutation = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -486,7 +486,7 @@ export type DeleteConversationMutation = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};
 
@@ -503,8 +503,8 @@ export type AllMessageQuery = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -523,8 +523,8 @@ export type AllMessageQuery = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -553,8 +553,8 @@ export type AllMessageConnectionQuery = {|
         __typename: string,
         cognitoId: string,
         userId: string,
-        username: string,
-        userType: string,
+        username: ?string,
+        userType: ?string,
       |},
       content: string,
       conversationId: string,
@@ -565,8 +565,8 @@ export type AllMessageConnectionQuery = {|
         __typename: string,
         cognitoId: string,
         userId: string,
-        username: string,
-        userType: string,
+        username: ?string,
+        userType: ?string,
       |},
       sender: ?string,
     |} >,
@@ -588,8 +588,8 @@ export type AllMessageFromQuery = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -608,8 +608,8 @@ export type AllMessageFromQuery = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -633,8 +633,8 @@ export type AllUserQuery = {|
     __typename: "User",
     cognitoId: string,
     userId: string,
-    username: string,
-    userType: string,
+    username: ?string,
+    userType: ?string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -661,8 +661,8 @@ export type MeQuery = {|
     __typename: "User",
     cognitoId: string,
     userId: string,
-    username: string,
-    userType: string,
+    username: ?string,
+    userType: ?string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -754,8 +754,8 @@ export type GetConversationQuery = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -787,7 +787,7 @@ export type GetConversationQuery = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};
 
@@ -806,8 +806,8 @@ export type ListConversationsQuery = {|
         __typename: string,
         cognitoId: string,
         userId: string,
-        username: string,
-        userType: string,
+        username: ?string,
+        userType: ?string,
       |},
       createdAt: number,
       ConversationId: string,
@@ -822,14 +822,14 @@ export type ListConversationsQuery = {|
       minor: ?number,
       latitude: ?number,
       longitude: ?number,
-      PropertyId: ?string,
+      PropertyId: string,
     |} >,
     nextToken: ?string,
   |},
 |};
 
 export type OnCreatePropertySubscriptionVariables = {|
-  propertyId?: ?string,
+  propertyId: string,
   name?: ?string,
   averageNoise?: ?number,
   averageLighting?: ?number,
@@ -850,7 +850,7 @@ export type OnCreatePropertySubscription = {|
 |};
 
 export type OnUpdatePropertySubscriptionVariables = {|
-  propertyId?: ?string,
+  propertyId: string,
   name?: ?string,
   averageNoise?: ?number,
   averageLighting?: ?number,
@@ -871,7 +871,7 @@ export type OnUpdatePropertySubscription = {|
 |};
 
 export type OnDeletePropertySubscriptionVariables = {|
-  propertyId?: ?string,
+  propertyId: string,
   name?: ?string,
   averageNoise?: ?number,
   averageLighting?: ?number,
@@ -892,8 +892,8 @@ export type OnDeletePropertySubscription = {|
 |};
 
 export type OnCreateConversationSubscriptionVariables = {|
-  createdAt: number,
-  ConversationId?: ?string,
+  createdAt?: ?number,
+  ConversationId: string,
   name?: ?string,
   sentiment?: ?number,
   classification?: ?string,
@@ -906,8 +906,8 @@ export type OnCreateConversationSubscription = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -939,13 +939,13 @@ export type OnCreateConversationSubscription = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};
 
 export type OnUpdateConversationSubscriptionVariables = {|
-  createdAt: number,
-  ConversationId?: ?string,
+  createdAt?: ?number,
+  ConversationId: string,
   name?: ?string,
   sentiment?: ?number,
   classification?: ?string,
@@ -958,8 +958,8 @@ export type OnUpdateConversationSubscription = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -991,13 +991,13 @@ export type OnUpdateConversationSubscription = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};
 
 export type OnDeleteConversationSubscriptionVariables = {|
-  createdAt: number,
-  ConversationId?: ?string,
+  createdAt?: ?number,
+  ConversationId: string,
   name?: ?string,
   sentiment?: ?number,
   classification?: ?string,
@@ -1010,8 +1010,8 @@ export type OnDeleteConversationSubscription = {|
       __typename: string,
       cognitoId: string,
       userId: string,
-      username: string,
-      userType: string,
+      username: ?string,
+      userType: ?string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -1043,6 +1043,6 @@ export type OnDeleteConversationSubscription = {|
     minor: ?number,
     latitude: ?number,
     longitude: ?number,
-    PropertyId: ?string,
+    PropertyId: string,
   |},
 |};

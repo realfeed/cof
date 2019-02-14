@@ -14,26 +14,54 @@ import Me from '../../me';
 
 const { Section, Item } = TableView
 
+import Amplify, { Auth } from 'aws-amplify';
 import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
-import { listConversations } from '../graphql/queries';
+import { me } from '../graphql/queries';
 
 export default class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myBuildings: Me["data"]["me"]["properties"]["userProperties"]
+      myProperties: [],
+      myBuildings: Me.data.me.properties.userProperties,
+      currentUser: " "
     }
   }
 
-  async componentWillMount() {
-    await client.query({
-      query: gql(listConversations)
-    }).then(({ data: { listConversations } }) => {
-      console.log(listConversations.items);
-    });
+  myselfResponse = () => {
+    (async () => {
+      console.log("Calling API");
+      console.log(this.state.currentUser);
+      const myself = await client.query({
+        query: gql(me),
+        variables: { username: this.state.currentUser }
+      });
+      console.log("myself Response");
+            if (myself.data.me === null) {} else {
+              this.setState({
+                myProperties: myself.data.me.properties.userProperties,
+              });
+            }
+    })();
   }
 
+  componentDidMount() {
+    console.log("Requesting current user")
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+    .then(
+      user => {
+        console.log(JSON.stringify(user.username, null, 2));
+        this.setState = ({
+         currentUser: JSON.stringify(user.username, null, 2),
+      });
+      this.myselfResponse();
+      console.log("State set");
+    })
+    .catch(err => console.log(err));
+  }
 
   static navigationOptions = { header:null};
 

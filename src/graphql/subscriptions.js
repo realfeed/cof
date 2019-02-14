@@ -2,7 +2,7 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateProperty = `subscription OnCreateProperty(
-  $propertyId: String
+  $propertyId: ID!
   $name: String
   $averageNoise: Float
   $averageLighting: Float
@@ -26,7 +26,7 @@ export const onCreateProperty = `subscription OnCreateProperty(
 }
 `;
 export const onUpdateProperty = `subscription OnUpdateProperty(
-  $propertyId: String
+  $propertyId: ID!
   $name: String
   $averageNoise: Float
   $averageLighting: Float
@@ -50,7 +50,7 @@ export const onUpdateProperty = `subscription OnUpdateProperty(
 }
 `;
 export const onDeleteProperty = `subscription OnDeleteProperty(
-  $propertyId: String
+  $propertyId: ID!
   $name: String
   $averageNoise: Float
   $averageLighting: Float
@@ -74,8 +74,8 @@ export const onDeleteProperty = `subscription OnDeleteProperty(
 }
 `;
 export const onCreateConversation = `subscription OnCreateConversation(
-  $createdAt: Int!
-  $ConversationId: ID
+  $createdAt: Int
+  $ConversationId: ID!
   $name: String
   $sentiment: Float
   $classification: String
@@ -124,8 +124,8 @@ export const onCreateConversation = `subscription OnCreateConversation(
 }
 `;
 export const onUpdateConversation = `subscription OnUpdateConversation(
-  $createdAt: Int!
-  $ConversationId: ID
+  $createdAt: Int
+  $ConversationId: ID!
   $name: String
   $sentiment: Float
   $classification: String
@@ -174,8 +174,8 @@ export const onUpdateConversation = `subscription OnUpdateConversation(
 }
 `;
 export const onDeleteConversation = `subscription OnDeleteConversation(
-  $createdAt: Int!
-  $ConversationId: ID
+  $createdAt: Int
+  $ConversationId: ID!
   $name: String
   $sentiment: Float
   $classification: String

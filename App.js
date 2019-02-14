@@ -17,6 +17,10 @@ import { withAuthenticator } from 'aws-amplify-react-native';
 
 import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+import { allUser } from './src/graphql/queries';
+import { createUser} from './src/graphql/mutations';
+import EventEmitter from "react-native-md5";
+import md5 from "react-native-md5";
 
 Amplify.configure(awsmobile);
 
@@ -39,6 +43,67 @@ export const client = new AWSAppSyncClient({
 type Props = {};
 
 class App extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+     currentUser: " ",
+     hex_md5v: md5.hex_md5( Date.now() +"" ),
+   }
+  }
+
+  submitUser = () => {
+    (async () => {
+      console.log("Awaiting mutation")
+      const result = await client.mutate({
+        mutation: gql(createUser),
+        variables: {
+          input: {
+            cognitoId: this.state.currentUser,
+            userId: this.state.hex_md5v,
+            username: this.state.currentUser,
+            userType: "occupant",
+          }
+        }
+      });
+      console.log(result.data.createUser);
+    })();
+  }
+
+  currentUsersResponse = () => {
+    (async () => {
+      console.log("Calling API");
+      console.log(this.state.currentUser);
+      const currentUsers =  await client.query({
+          query: gql(allUser),
+          variables: { username: this.state.currentUser }
+      });
+      console.log("currentUsers Response");
+      console.log(currentUsers.data.allUser);
+      if (currentUsers.data.allUser.length == 0) {
+        this.submitUser();
+      }
+    })();
+  }
+
+  componentDidMount() {
+    console.log("Requesting current user")
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+    .then(
+      user => {
+        alert(JSON.stringify(user.username, null, 2));
+        console.log(JSON.stringify(user.username, null, 2));
+        this.setState = ({
+         currentUser: JSON.stringify(user.username, null, 2),
+        });
+        alert(this.state.currentUser);
+        this.currentUsersResponse();
+        console.log("State set");
+      })
+    .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <AppContainer />
