@@ -57,6 +57,24 @@ export type DeleteConversationInput = {|
   ConversationId: string,
 |};
 
+export type CreateUserInput = {|
+  cognitoId: string,
+  userId: string,
+  username?: ?string,
+  userType?: ?string,
+|};
+
+export type UpdateUserInput = {|
+  cognitoId?: ?string,
+  userId: string,
+  username?: ?string,
+  userType?: ?string,
+|};
+
+export type DeleteUserInput = {|
+  userId: string,
+|};
+
 export type TablePropertyFilterInput = {|
   propertyId?: ?TableStringFilterInput,
   name?: ?TableStringFilterInput,
@@ -130,6 +148,13 @@ export type TableIntFilterInput = {|
   between?: ?Array< ?number >,
 |};
 
+export type TableUserFilterInput = {|
+  cognitoId?: ?TableIDFilterInput,
+  userId?: ?TableIDFilterInput,
+  username?: ?TableStringFilterInput,
+  userType?: ?TableStringFilterInput,
+|};
+
 export type CreateMessageMutationVariables = {|
   content?: ?string,
   conversationId: string,
@@ -176,39 +201,6 @@ export type CreateMessageMutation = {|
       |},
     |},
     sender: ?string,
-  |},
-|};
-
-export type CreateUserMutationVariables = {|
-  username: string,
-  userType: string,
-|};
-
-export type CreateUserMutation = {|
-  createUser: ? {|
-    __typename: "User",
-    cognitoId: string,
-    userId: string,
-    username: ?string,
-    userType: ?string,
-    properties: ? {|
-      __typename: string,
-      nextToken: ?string,
-      userProperties: ? Array<? {|
-        __typename: string,
-        propertyId: string,
-        userId: string,
-      |} >,
-    |},
-    conversations: ? {|
-      __typename: string,
-      nextToken: ?string,
-      userConversations: ? Array<? {|
-        __typename: string,
-        conversationId: string,
-        userId: string,
-      |} >,
-    |},
   |},
 |};
 
@@ -487,6 +479,102 @@ export type DeleteConversationMutation = {|
     latitude: ?number,
     longitude: ?number,
     PropertyId: string,
+  |},
+|};
+
+export type CreateUserMutationVariables = {|
+  input: CreateUserInput,
+|};
+
+export type CreateUserMutation = {|
+  createUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
+  |},
+|};
+
+export type UpdateUserMutationVariables = {|
+  input: UpdateUserInput,
+|};
+
+export type UpdateUserMutation = {|
+  updateUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
+  |},
+|};
+
+export type DeleteUserMutationVariables = {|
+  input: DeleteUserInput,
+|};
+
+export type DeleteUserMutation = {|
+  deleteUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
   |},
 |};
 
@@ -828,6 +916,66 @@ export type ListConversationsQuery = {|
   |},
 |};
 
+export type GetUserQueryVariables = {|
+  userId: string,
+|};
+
+export type GetUserQuery = {|
+  getUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
+  |},
+|};
+
+export type ListUsersQueryVariables = {|
+  filter?: ?TableUserFilterInput,
+  limit?: ?number,
+  nextToken?: ?string,
+|};
+
+export type ListUsersQuery = {|
+  listUsers: ? {|
+    __typename: "UserConnection",
+    items: ? Array<? {|
+      __typename: string,
+      cognitoId: string,
+      userId: string,
+      username: ?string,
+      userType: ?string,
+      properties: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+      conversations: ? {|
+        __typename: string,
+        nextToken: ?string,
+      |},
+    |} >,
+    nextToken: ?string,
+  |},
+|};
+
 export type OnCreatePropertySubscriptionVariables = {|
   propertyId: string,
   name?: ?string,
@@ -1044,5 +1192,110 @@ export type OnDeleteConversationSubscription = {|
     latitude: ?number,
     longitude: ?number,
     PropertyId: string,
+  |},
+|};
+
+export type OnCreateUserSubscriptionVariables = {|
+  cognitoId?: ?string,
+  userId?: ?string,
+  username?: ?string,
+  userType?: ?string,
+|};
+
+export type OnCreateUserSubscription = {|
+  onCreateUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
+  |},
+|};
+
+export type OnUpdateUserSubscriptionVariables = {|
+  cognitoId?: ?string,
+  userId?: ?string,
+  username?: ?string,
+  userType?: ?string,
+|};
+
+export type OnUpdateUserSubscription = {|
+  onUpdateUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
+  |},
+|};
+
+export type OnDeleteUserSubscriptionVariables = {|
+  cognitoId?: ?string,
+  userId?: ?string,
+  username?: ?string,
+  userType?: ?string,
+|};
+
+export type OnDeleteUserSubscription = {|
+  onDeleteUser: ? {|
+    __typename: "User",
+    cognitoId: string,
+    userId: string,
+    username: ?string,
+    userType: ?string,
+    properties: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userProperties: ? Array<? {|
+        __typename: string,
+        propertyId: string,
+        userId: string,
+      |} >,
+    |},
+    conversations: ? {|
+      __typename: string,
+      nextToken: ?string,
+      userConversations: ? Array<? {|
+        __typename: string,
+        conversationId: string,
+        userId: string,
+      |} >,
+    |},
   |},
 |};

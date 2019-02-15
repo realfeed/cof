@@ -269,3 +269,48 @@ export const listConversations = `query ListConversations(
   }
 }
 `;
+export const getUser = `query GetUser($userId: ID!) {
+  getUser(userId: $userId) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
+  }
+}
+`;
+export const listUsers = `query ListUsers(
+  $filter: TableUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      cognitoId
+      userId
+      username
+      userType
+      properties {
+        nextToken
+      }
+      conversations {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;

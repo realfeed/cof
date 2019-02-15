@@ -223,3 +223,102 @@ export const onDeleteConversation = `subscription OnDeleteConversation(
   }
 }
 `;
+export const onCreateUser = `subscription OnCreateUser(
+  $cognitoId: ID
+  $userId: ID
+  $username: String
+  $userType: String
+) {
+  onCreateUser(
+    cognitoId: $cognitoId
+    userId: $userId
+    username: $username
+    userType: $userType
+  ) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
+  }
+}
+`;
+export const onUpdateUser = `subscription OnUpdateUser(
+  $cognitoId: ID
+  $userId: ID
+  $username: String
+  $userType: String
+) {
+  onUpdateUser(
+    cognitoId: $cognitoId
+    userId: $userId
+    username: $username
+    userType: $userType
+  ) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
+  }
+}
+`;
+export const onDeleteUser = `subscription OnDeleteUser(
+  $cognitoId: ID
+  $userId: ID
+  $username: String
+  $userType: String
+) {
+  onDeleteUser(
+    cognitoId: $cognitoId
+    userId: $userId
+    username: $username
+    userType: $userType
+  ) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
+  }
+}
+`;

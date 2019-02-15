@@ -46,33 +46,10 @@ export const createMessage = `mutation CreateMessage(
   }
 }
 `;
-export const createUser = `mutation CreateUser($username: String!, $userType: String!) {
-  createUser(username: $username, userType: $userType) {
-    cognitoId
-    userId
-    username
-    userType
-    properties {
-      nextToken
-      userProperties {
-        propertyId
-        userId
-      }
-    }
-    conversations {
-      nextToken
-      userConversations {
-        conversationId
-        userId
-      }
-    }
-  }
-}
-`;
 export const createUserConversations = `mutation CreateUserConversations(
   $conversationId: ID!
   $userId: ID!
-  $propertyId: String!
+  $propertyId: ID!
 ) {
   createUserConversations(
     conversationId: $conversationId
@@ -290,6 +267,75 @@ export const deleteConversation = `mutation DeleteConversation($input: DeleteCon
     latitude
     longitude
     PropertyId
+  }
+}
+`;
+export const createUser = `mutation CreateUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
+  }
+}
+`;
+export const updateUser = `mutation UpdateUser($input: UpdateUserInput!) {
+  updateUser(input: $input) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
+  }
+}
+`;
+export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
+  deleteUser(input: $input) {
+    cognitoId
+    userId
+    username
+    userType
+    properties {
+      nextToken
+      userProperties {
+        propertyId
+        userId
+      }
+    }
+    conversations {
+      nextToken
+      userConversations {
+        conversationId
+        userId
+      }
+    }
   }
 }
 `;
