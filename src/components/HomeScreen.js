@@ -39,8 +39,8 @@ export default class HomeScreen extends Component<Props> {
       });
       console.log("myself Response");
             if (myself.data.me === null) {} else {
-              this.setState({
-                myProperties: myself.data.me.properties.userProperties,
+              this.setState((myProperties) => {
+                return {myProperties: myself.data.me.properties.userProperties}
               });
             }
     })();
@@ -55,7 +55,7 @@ export default class HomeScreen extends Component<Props> {
       user => {
         console.log(JSON.stringify(user.username, null, 2));
         this.setState((currentUser) => {
-          return { currentUser: JSON.stringify(user.username, null, 2)}
+          return { currentUser: user.username}
         });
       this.myselfResponse();
       console.log("State set");

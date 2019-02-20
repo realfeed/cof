@@ -99,7 +99,7 @@ class App extends Component<Props> {
         alert(JSON.stringify(user.username, null, 2));
         console.log(JSON.stringify(user.username, null, 2));
         this.setState((currentUser) => {
-          return { currentUser: JSON.stringify(user.username, null, 2)};
+          return { currentUser: user.username};
         })
         this.currentUsersResponse();
         console.log("State set");
