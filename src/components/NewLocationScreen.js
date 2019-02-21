@@ -116,9 +116,6 @@ export default class NewLocationScreen extends Component<Props> {
             <Item value="2" onPress={() => true}>
               {this.state.myBuildings[1].propertyId}
             </Item>
-            <Item value="3" onPress={() => true}>
-              {this.state.features[0].place_name}
-            </Item>
           </Section>
         </TableView>
         <View style={styles.wrapper}>
