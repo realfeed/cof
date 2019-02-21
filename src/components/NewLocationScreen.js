@@ -8,6 +8,8 @@ import { Button } from 'react-native-material-ui';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 
+import Geolocation from 'react-native-geolocation-service';
+
 Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 import TableView from 'react-native-tableview';
@@ -19,8 +21,56 @@ export default class NewLocationScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      myBuildings: Me["data"]["me"]["properties"]["userProperties"]
+      myBuildings: Me["data"]["me"]["properties"]["userProperties"],
+      mapboxRequest: " ",
+      features: [],
     }
+  }
+
+  geoCoding = () => {
+    console.log("Awaiting geoCoding");
+    fetch(this.state.mapboxRequest)
+    .then(response => response.json())
+    .then(data => this.setState({ features: data.features }))
+    .catch(e => console.log(e));
+  }
+
+  setMapboxRequest = () => {
+    var url_1 = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
+    var url_2 = ".json?access_token=";
+    var url_3 = url_1.concat(this.state.location, url_2, MAPBOX_ACCESS_TOKEN);
+    this.setState((mapboxRequest) => {
+      return { mapboxRequest: url_3};
+    });
+    console.log("Mapbox Request");
+    console.log(this.state.mapboxRequest);
+    alert(this.state.mapboxRequest);
+    this.geoCoding();
+  }
+
+  geoLocation = () => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        console.log("Getting Current Position**")
+        console.log(position);
+        this.setState((location) => {
+          return {location: [position.coords.longitude, position.coords.latitude]}
+        });
+        alert(this.state.location);
+        console.log("locationCoordinates");
+        this.setMapboxRequest();
+      },
+      (error) => {
+                // See error code charts below.
+                console.log(error.code, error.message);
+      },
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    this.geoLocation();
   }
 
   static navigationOptions = { header:null};
@@ -32,7 +82,7 @@ export default class NewLocationScreen extends Component<Props> {
           <Mapbox.MapView
           styleURL={Mapbox.StyleURL.Street}
           zoomLevel={15}
-          centerCoordinate={[11.256, 43.770]}
+          centerCoordinate={this.state.location}
           style={styles.container}>
           </Mapbox.MapView>
         </View>
@@ -65,6 +115,9 @@ export default class NewLocationScreen extends Component<Props> {
             </Item>
             <Item value="2" onPress={() => true}>
               {this.state.myBuildings[1].propertyId}
+            </Item>
+            <Item value="3" onPress={() => true}>
+              {this.state.features[0].place_name}
             </Item>
           </Section>
         </TableView>

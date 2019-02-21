@@ -37,6 +37,7 @@ export default class HomeScreen extends Component<Props> {
         query: gql(me),
         variables: { username: this.state.currentUser }
       });
+      alert(myself.data.me);
       console.log("myself Response");
             if (myself.data.me === null) {} else {
               this.setState((myProperties) => {
@@ -47,7 +48,7 @@ export default class HomeScreen extends Component<Props> {
   }
 
   componentDidMount() {
-    console.log("Requesting current user")
+    console.log("Requesting current user");
     Auth.currentAuthenticatedUser({
       bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     })

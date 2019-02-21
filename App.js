@@ -54,7 +54,6 @@ class App extends Component<Props> {
   submitUser = () => {
     (async () => {
       console.log("Awaiting mutation");
-      alert(this.state.currentUser);
       console.log(this.state.currentUser);
       try {
         const result = await client.mutate({
@@ -96,7 +95,6 @@ class App extends Component<Props> {
     })
     .then(
       user => {
-        alert(JSON.stringify(user.username, null, 2));
         console.log(JSON.stringify(user.username, null, 2));
         this.setState((currentUser) => {
           return { currentUser: user.username};
