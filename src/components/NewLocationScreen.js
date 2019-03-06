@@ -3,7 +3,7 @@ import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 
-import { Button } from 'react-native-material-ui';
+import { Button, ListItem, Subheader } from 'react-native-material-ui';
 
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
@@ -15,15 +15,14 @@ Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 import TableView from 'react-native-tableview';
 import Me from '../../me';
 
-const { Section, Item } = TableView
-
 export default class NewLocationScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       myBuildings: Me["data"]["me"]["properties"]["userProperties"],
       mapboxRequest: " ",
-      features: [],
+      placeNames: [ ],
+      location: [0,0],
     }
   }
 
@@ -31,7 +30,9 @@ export default class NewLocationScreen extends Component<Props> {
     console.log("Awaiting geoCoding");
     fetch(this.state.mapboxRequest)
     .then(response => response.json())
-    .then(data => this.setState({ features: data.features }))
+    .then(data => {this.setState({ placeNames: data.features })
+  }).then(alert(this.state.placeNames)
+  )
     .catch(e => console.log(e));
   }
 
@@ -44,7 +45,6 @@ export default class NewLocationScreen extends Component<Props> {
     });
     console.log("Mapbox Request");
     console.log(this.state.mapboxRequest);
-    alert(this.state.mapboxRequest);
     this.geoCoding();
   }
 
@@ -56,7 +56,6 @@ export default class NewLocationScreen extends Component<Props> {
         this.setState((location) => {
           return {location: [position.coords.longitude, position.coords.latitude]}
         });
-        alert(this.state.location);
         console.log("locationCoordinates");
         this.setMapboxRequest();
       },
@@ -94,30 +93,19 @@ export default class NewLocationScreen extends Component<Props> {
         icon="add"
         onPress={()=> this.props.navigation.navigate("Home")}>
         </Button>
-        <TableView
-          style={styles.container}
-          textColor="black"
-          headerTextColor="black"
-          selectedTextColor="rgba(249,144,0,0.9)"
-          headerFontFamily="Helvetica Neue"
-          headerFontSize={15}
-          headerFontWeight="bold"
-          fontFamily="Helvetica Neue"
-          fontSize={15}
-          allowsToggle
-          selectedValue={this.state.myBuildings[0].propertyId}
-          tableViewStyle={TableView.Consts.Style.Grouped}
-          tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
-          onPress={event => console.log(event)}>
-          <Section label="Nearby Locations">
-            <Item value="1" onPress={() => true}>
-              {this.state.myBuildings[0].propertyId}
-            </Item>
-            <Item value="2" onPress={() => true}>
-              {this.state.myBuildings[1].propertyId}
-            </Item>
-          </Section>
-        </TableView>
+        <View style={styles.container}>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+            NEARBY LOCATIONS
+          </Text>
+          {this.state.placeNames.map(placeName => {
+            return
+                <ListItem
+                primaryText={placeName.place_name}
+                root={styles.listItemRoot}
+                selected={styles.listItemSelected}
+                onPress={() => selected}/>
+          })}
+        </View>
         <View style={styles.wrapper}>
           <Button
             style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}
@@ -148,5 +136,19 @@ const styles = ({
     margin: 20,
     backgroundColor: "rgba(0,0,0,0.8)",
     borderRadius: 5,
-  }
+  },
+  listItemRoot: {
+    color:"black",
+    font: "Helvetica Neue",
+    fontSize: 15,
+    borderWidth: 0.4,
+    borderColor: "rgba(0,0,0,0.3)",
+  },
+  listItemSelected: {
+    color: "rgba(249,144,0,0.9)",
+    font: "Helvetica Neue",
+    fontSize: 15,
+    borderWidth: 0.4,
+    borderColor: "rgba(0,0,0,0.3)",
+  },
 });

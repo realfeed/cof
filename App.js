@@ -78,7 +78,7 @@ class App extends Component<Props> {
       console.log(this.state.currentUser);
       const currentUsers =  await client.query({
           query: gql(allUser),
-          variables: { username: this.state.currentUser }
+          variables: { cognitoId: this.state.currentUser }
       });
       console.log("currentUsers Response");
       console.log(currentUsers.data.allUser);

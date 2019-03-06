@@ -269,8 +269,8 @@ export const listConversations = `query ListConversations(
   }
 }
 `;
-export const getUser = `query GetUser($userId: ID!) {
-  getUser(userId: $userId) {
+export const getUser = `query GetUser($cognitoId: ID!) {
+  getUser(cognitoId: $cognitoId) {
     cognitoId
     userId
     username

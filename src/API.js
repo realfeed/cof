@@ -917,7 +917,7 @@ export type ListConversationsQuery = {|
 |};
 
 export type GetUserQueryVariables = {|
-  userId: string,
+  cognitoId: string,
 |};
 
 export type GetUserQuery = {|

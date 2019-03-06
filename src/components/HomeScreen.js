@@ -37,7 +37,6 @@ export default class HomeScreen extends Component<Props> {
         query: gql(me),
         variables: { username: this.state.currentUser }
       });
-      alert(myself.data.me);
       console.log("myself Response");
             if (myself.data.me === null) {} else {
               this.setState((myProperties) => {

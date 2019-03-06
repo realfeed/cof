@@ -387,7 +387,7 @@
           "name" : "getUser",
           "description" : null,
           "args" : [ {
-            "name" : "userId",
+            "name" : "cognitoId",
             "description" : null,
             "type" : {
               "kind" : "NON_NULL",
