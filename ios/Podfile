@@ -7,7 +7,7 @@ target 'cofRN' do
 
   # Pods for cofRN
   # Flexbox Layout Manager Used By React Native
-  pod 'yoga=0.58.5.React', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
+  pod 'yoga', :tag => '0.58.5.React', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
 
   # React Native
   pod 'React', path: '../node_modules/react-native', subspecs: [
