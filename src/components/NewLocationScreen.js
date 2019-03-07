@@ -75,7 +75,6 @@ export default class NewLocationScreen extends Component<Props> {
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
     this.geoLocation();
   }
 
@@ -104,15 +103,20 @@ export default class NewLocationScreen extends Component<Props> {
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
             NEARBY LOCATIONS
           </Text>
-          {this.state.placeNames.map(placeName => {
-            return
-                <ListItem
-                primaryText={placeName.place_name}
-                root={styles.listItemRoot}
-                selected={styles.listItemSelected}
-                onPress={() => selected}/>
-          })}
         </View>
+        {
+          this.state.placeNames.map((placeName, index) => {
+            console.log("Rendering placeNames");
+            console.log(this.state.placeNames);
+            console.log(this.state.placeNames[0].place_name);
+            return
+            <View style={styles.container}>
+              <ListItem key={index} root={styles.listItemRoot} selected={styles.listItemSelected} onPress={() => selected}>
+                {placeName.place_name}
+              </ListItem>;
+            </View>
+          })
+        }
         <View style={styles.wrapper}>
           <Button
             style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}

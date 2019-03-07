@@ -85,6 +85,8 @@ class App extends Component<Props> {
       alert(currentUsers.data.getUser);
       if (currentUsers.data.getUser.length == 0) {
         this.submitUser();
+      } else {
+        alert(currentUsers.data.getUser);
       }
     })();
   }

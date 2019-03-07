@@ -59,20 +59,20 @@ export type DeleteConversationInput = {|
 
 export type CreateUserInput = {|
   cognitoId: string,
-  userId: string,
+  userId?: ?string,
   username?: ?string,
   userType?: ?string,
 |};
 
 export type UpdateUserInput = {|
-  cognitoId?: ?string,
-  userId: string,
+  cognitoId: string,
+  userId?: ?string,
   username?: ?string,
   userType?: ?string,
 |};
 
 export type DeleteUserInput = {|
-  userId: string,
+  cognitoId: string,
 |};
 
 export type TablePropertyFilterInput = {|
@@ -168,7 +168,7 @@ export type CreateMessageMutation = {|
     author: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -188,7 +188,7 @@ export type CreateMessageMutation = {|
     recipient: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -237,7 +237,7 @@ export type CreateUserConversationsMutation = {|
       user: ? {|
         __typename: string,
         cognitoId: string,
-        userId: string,
+        userId: ?string,
         username: ?string,
         userType: ?string,
       |},
@@ -248,7 +248,7 @@ export type CreateUserConversationsMutation = {|
       origin: ? {|
         __typename: string,
         cognitoId: string,
-        userId: string,
+        userId: ?string,
         username: ?string,
         userType: ?string,
       |},
@@ -271,7 +271,7 @@ export type CreateUserConversationsMutation = {|
     user: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -348,7 +348,7 @@ export type CreateConversationMutation = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -396,7 +396,7 @@ export type UpdateConversationMutation = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -444,7 +444,7 @@ export type DeleteConversationMutation = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -490,7 +490,7 @@ export type CreateUserMutation = {|
   createUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -522,7 +522,7 @@ export type UpdateUserMutation = {|
   updateUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -554,7 +554,7 @@ export type DeleteUserMutation = {|
   deleteUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -590,7 +590,7 @@ export type AllMessageQuery = {|
     author: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -610,7 +610,7 @@ export type AllMessageQuery = {|
     recipient: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -640,7 +640,7 @@ export type AllMessageConnectionQuery = {|
       author: ? {|
         __typename: string,
         cognitoId: string,
-        userId: string,
+        userId: ?string,
         username: ?string,
         userType: ?string,
       |},
@@ -652,7 +652,7 @@ export type AllMessageConnectionQuery = {|
       recipient: ? {|
         __typename: string,
         cognitoId: string,
-        userId: string,
+        userId: ?string,
         username: ?string,
         userType: ?string,
       |},
@@ -675,7 +675,7 @@ export type AllMessageFromQuery = {|
     author: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -695,7 +695,7 @@ export type AllMessageFromQuery = {|
     recipient: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -720,7 +720,7 @@ export type AllUserQuery = {|
   allUser: ? Array<? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -748,7 +748,7 @@ export type MeQuery = {|
   me: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -841,7 +841,7 @@ export type GetConversationQuery = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -893,7 +893,7 @@ export type ListConversationsQuery = {|
       origin: ? {|
         __typename: string,
         cognitoId: string,
-        userId: string,
+        userId: ?string,
         username: ?string,
         userType: ?string,
       |},
@@ -924,7 +924,7 @@ export type GetUserQuery = {|
   getUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -960,7 +960,7 @@ export type ListUsersQuery = {|
     items: ? Array<? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -1053,7 +1053,7 @@ export type OnCreateConversationSubscription = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -1105,7 +1105,7 @@ export type OnUpdateConversationSubscription = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -1157,7 +1157,7 @@ export type OnDeleteConversationSubscription = {|
     origin: ? {|
       __typename: string,
       cognitoId: string,
-      userId: string,
+      userId: ?string,
       username: ?string,
       userType: ?string,
       properties: ? {|
@@ -1206,7 +1206,7 @@ export type OnCreateUserSubscription = {|
   onCreateUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -1241,7 +1241,7 @@ export type OnUpdateUserSubscription = {|
   onUpdateUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
@@ -1276,7 +1276,7 @@ export type OnDeleteUserSubscription = {|
   onDeleteUser: ? {|
     __typename: "User",
     cognitoId: string,
-    userId: string,
+    userId: ?string,
     username: ?string,
     userType: ?string,
     properties: ? {|
