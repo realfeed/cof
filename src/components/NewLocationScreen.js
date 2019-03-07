@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import { Button, ListItem, Subheader } from 'react-native-material-ui';
 
@@ -15,7 +16,7 @@ Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 import TableView from 'react-native-tableview';
 import Me from '../../me';
 
-export default class NewLocationScreen extends Component<Props> {
+export class NewLocationScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +46,7 @@ export default class NewLocationScreen extends Component<Props> {
 
   setMapboxRequest = () => {
     var url_1 = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
-    var url_2 = ".json?access_token=";
+    var url_2 = ".json?types=poi&limit=5&access_token=";
     var url_3 = url_1.concat(this.state.location, url_2, MAPBOX_ACCESS_TOKEN);
     this.setState((mapboxRequest) => {
       return { mapboxRequest: url_3};
@@ -163,3 +164,10 @@ const styles = ({
     borderColor: "rgba(0,0,0,0.3)",
   },
 });
+
+const mapStateToProps = (state) => {
+  const { current_location } = state
+  return { current_location }
+};
+
+export default connect(mapStateToProps)(NewLocationScreen);

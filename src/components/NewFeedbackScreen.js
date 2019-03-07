@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking, TextInput} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import { Button } from 'react-native-material-ui';
 
@@ -15,7 +16,7 @@ import { createConversation } from '../graphql/mutations';
 import EventEmitter from "react-native-md5";
 import md5 from "react-native-md5";
 
-export default class NewFeedbackScreen extends Component<Props> {
+export class NewFeedbackScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -114,3 +115,10 @@ const styles = ({
     borderRadius: 5,
   }
 });
+
+const mapStateToProps = (state) => {
+  const { current_location } = state
+  return { current_location }
+};
+
+export default connect(mapStateToProps)(NewFeedbackScreen);

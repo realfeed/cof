@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking, TextInput} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import { Button, Card } from 'react-native-material-ui';
 
@@ -9,7 +10,7 @@ import Form from 'react-native-form';
 
 import GetConversation from '../../getConversation'
 
-export default class NewFeedbackScreen extends Component<Props> {
+export class MessagingScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,3 +94,10 @@ const styles = ({
     borderRadius: 5,
   }
 });
+
+const mapStateToProps = (state) => {
+  const { current_conversation } = state
+  return { current_conversation }
+};
+
+export default connect(mapStateToProps)(MessagingScreen);

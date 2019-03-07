@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import { Button } from 'react-native-material-ui';
 import { BottomNavigation } from 'react-native-material-ui';
@@ -19,7 +20,7 @@ import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { me } from '../graphql/queries';
 
-export default class HomeScreen extends Component<Props> {
+export class HomeScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +73,7 @@ export default class HomeScreen extends Component<Props> {
         <Button
           iconLeft
           style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(0,0,0,0.8)", height: 50, margin: 18, borderRadius: 5 } }}
-          text="New Location"
+          text="Update Current Location"
           upperCase={false}
           icon="add"
           onPress={()=> this.props.navigation.navigate("NewLocation")}>
@@ -138,3 +139,10 @@ const styles = ({
     borderRadius: 5,
   }
 });
+
+const mapStateToProps = (state) => {
+  const { current_location } = state
+  return { current_location }
+};
+
+export default connect(mapStateToProps)(HomeScreen);
