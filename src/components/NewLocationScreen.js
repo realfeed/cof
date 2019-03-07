@@ -20,8 +20,8 @@ export default class NewLocationScreen extends Component<Props> {
     super(props);
     this.state = {
       myBuildings: Me["data"]["me"]["properties"]["userProperties"],
-      mapboxRequest: " ",
-      placeNames: [ ],
+      mapboxRequest: "",
+      placeNames: [],
       location: [0,0],
     }
   }
@@ -29,12 +29,19 @@ export default class NewLocationScreen extends Component<Props> {
   geoCoding = () => {
     console.log("Awaiting geoCoding");
     fetch(this.state.mapboxRequest)
-    .then(response => response.json())
-    .then(data => {this.setState({ placeNames: data.features })
-  }).then(alert(this.state.placeNames)
-  )
-    .catch(e => console.log(e));
+      .then((response) => {
+        response.json().then((data) => {
+          console.log(data);
+          this.setState({ placeNames: data.features });
+          console.log("placeNames");
+          console.info(this.state.placeNames);
+          });
+        })
+    .catch((err) => {
+      console.log('Fetch Error :-S', err);
+    });
   }
+
 
   setMapboxRequest = () => {
     var url_1 = "https://api.mapbox.com/geocoding/v5/mapbox.places/";

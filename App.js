@@ -17,7 +17,7 @@ import { withAuthenticator } from 'aws-amplify-react-native';
 
 import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
-import { allUser } from './src/graphql/queries';
+import { getUser } from './src/graphql/queries';
 import { createUser} from './src/graphql/mutations';
 import EventEmitter from "react-native-md5";
 import md5 from "react-native-md5";
@@ -46,7 +46,7 @@ class App extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-     currentUser: " ",
+     currentUser: "",
      hex_md5v: md5.hex_md5( Date.now() +"" ),
    }
   }
@@ -77,12 +77,13 @@ class App extends Component<Props> {
       console.log("Calling API");
       console.log(this.state.currentUser);
       const currentUsers =  await client.query({
-          query: gql(allUser),
+          query: gql(getUser),
           variables: { cognitoId: this.state.currentUser }
       });
       console.log("currentUsers Response");
-      console.log(currentUsers.data.allUser);
-      if (currentUsers.data.allUser.length == 0) {
+      console.log(currentUsers.data.getUser);
+      alert(currentUsers.data.getUser);
+      if (currentUsers.data.getUser.length == 0) {
         this.submitUser();
       }
     })();

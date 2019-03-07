@@ -18,7 +18,7 @@
     "graphql-import": "^0.7.1",
     "graphql-tag": "^2.10.1",
     "react": "16.6.3",
-    "react-native": "^0.58.5",
+    "react-native": "^0.58.6",
     "react-native-dotenv": "^0.2.0",
     "react-native-elements": "^0.19.1",
     "react-native-form": "^2.1.3",
