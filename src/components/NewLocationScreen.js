@@ -95,11 +95,11 @@ export class NewLocationScreen extends Component<Props> {
           </Mapbox.MapView>
         </View>
         <View>
-          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", marginLeft: 20, marginTop: 18 }}>
             NEARBY LOCATIONS
           </Text>
         </View>
-        <View>
+        <View style={{ flex: 1, justifyContent: "flex-start"}}>
           {
             this.state.placeNames.map((placeName, index) => (
               <ListItem

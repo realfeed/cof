@@ -76,7 +76,7 @@ export class HomeScreen extends Component<Props> {
           onPress={()=> this.props.navigation.navigate("NewLocation")}>
         </Button>
         <View>
-          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", marginLeft: 20 }}>
             CURRENT LOCATION
           </Text>
         </View>
@@ -93,11 +93,11 @@ export class HomeScreen extends Component<Props> {
           </ListItem>
         </View>
         <View>
-          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", marginLeft: 20, marginTop: 18 }}>
             PARTICIPATING LOCATIONS
           </Text>
         </View>
-        <View>
+        <View style={{ flex: 1, justifyContent: "flex-start"}}>
           {
             this.state.myBuildings.map((otherPlace, index) => (
               <ListItem

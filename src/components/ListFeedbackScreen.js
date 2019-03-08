@@ -6,11 +6,9 @@ import { connect } from 'react-redux';
 import { updateConversation} from './ConversationActions';
 
 import { Button } from 'react-native-material-ui';
+import { ListItem } from 'react-native-elements';
 
-import TableView from 'react-native-tableview';
 import ListConversations from '../../listConversations';
-
-const { Section, Item } = TableView
 
 export class ListFeedbackScreen extends Component<Props> {
   constructor(props) {
@@ -34,47 +32,32 @@ export class ListFeedbackScreen extends Component<Props> {
           icon="add"
           onPress={()=> this.props.navigation.navigate("NewFeedback")}>>
         </Button>
-        <TableView
-          style={styles.container}
-          textColor="black"
-          headerTextColor="black"
-          headerFontFamily="Helvetica Neue"
-          headerFontSize={15}
-          detailTextColor="rgba(249,144,0,0.9)"
-          detailFontFamily="Helvetica Neue"
-          detailFontSize={12}
-          headerFontWeight="bold"
-          fontFamily="Helvetica Neue"
-          fontSize={15}
-          allowsToggle
-          tableViewStyle={TableView.Consts.Style.Grouped}
-          tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
-          onPress={event => console.log(event)}>
-          <Section arrow label="Conversations">
-            <Item
-            value="1"
-            detail={this.state.myConversations[0].PropertyId}
-            onPress={()=> this.props.navigation.navigate("Messages")}>
-              {this.state.myConversations[0].name}
-            </Item>
-            <Item
-            value="2"
-            detail={this.state.myConversations[1].PropertyId}
-            onPress={()=> this.props.navigation.navigate("Messages")}>
-              {this.state.myConversations[1].name}
-            </Item>
-            <Item value="2"
-            detail={this.state.myConversations[2].PropertyId}
-            onPress={()=> this.props.navigation.navigate("Messages")}>
-              {this.state.myConversations[2].name}
-            </Item>
-            <Item value="2"
-            detail={this.state.myConversations[3].PropertyId}
-            onPress={()=> this.props.navigation.navigate("Messages")}>
-              {this.state.myConversations[3].name}
-            </Item>
-          </Section>
-        </TableView>
+        <View>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", marginLeft: 20, marginTop: 18 }}>
+            CONVERSATIONS
+          </Text>
+        </View>
+        <View style={{ flex: 1, justifyContent: "flex-start"}}>
+          {
+            this.state.myConversations.map((conversations, index) => (
+              <ListItem
+              divider
+              key={index}
+              title={conversations.name}
+              subtitle={conversations.PropertyId}
+              titleStyle={styles.listItemRoot}
+              subtitleStyle={styles.listItemSelected}
+              topDivider
+              bottomDivider
+              checkBox
+              onPress={() => {
+                this.props.add(this.state.current_conversation)
+                this.props.navigation.navigate("Messages")
+              }}
+              />
+            ))
+          }
+        </View>
         <View style={styles.wrapper}>
           <Button
             style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}
@@ -105,6 +88,16 @@ const styles = ({
     margin: 20,
     backgroundColor: "rgba(0,0,0,0.8)",
     borderRadius: 5,
+  },
+  listItemRoot: {
+    color:"black",
+    font: "Helvetica Neue",
+    fontSize: 15,
+  },
+  listItemSelected: {
+    color: "rgba(249,144,0,0.9)",
+    font: "Helvetica Neue",
+    fontSize: 12,
   }
 });
 

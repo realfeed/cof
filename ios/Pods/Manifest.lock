@@ -49,8 +49,6 @@ PODS:
     - React
   - RNSVG (9.0.5):
     - React
-  - RNTableView (2.5.0):
-    - React
   - RNVectorIcons (4.6.0):
     - React
   - yoga (0.58.6.React)
@@ -76,7 +74,6 @@ DEPENDENCIES:
   - RNAWSCognito (from `../node_modules/amazon-cognito-identity-js`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - RNTableView (from `../node_modules/react-native-tableview`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
 
@@ -95,8 +92,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNSVG:
     :path: "../node_modules/react-native-svg"
-  RNTableView:
-    :path: "../node_modules/react-native-tableview"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   yoga:
@@ -110,10 +105,9 @@ SPEC CHECKSUMS:
   RNAWSCognito: 5f4859d05c2a20dafc8a1bbb15ffc6cc92fa4d0d
   RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
   RNSVG: 4834be1d644eb77f0e3f6de851881b83758a3124
-  RNTableView: 1899b6c998647c926019f3ed2ea93fcf814a8058
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   yoga: 0885622311729a02c2bc02dca97167787a51488b
 
-PODFILE CHECKSUM: 1ee7dfc73b0d94923e31673d7e7db0754c9130d4
+PODFILE CHECKSUM: 5dfbfc666c0cc2da75ebab3bae8b1a133eac16d1
 
 COCOAPODS: 1.5.3
