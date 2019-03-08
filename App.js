@@ -15,10 +15,6 @@ import Amplify, { Auth } from 'aws-amplify';
 import awsmobile from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import statusReducer from './src/components/StatusReducer';
-
 import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { getUser } from './src/graphql/queries';
@@ -27,8 +23,6 @@ import EventEmitter from "react-native-md5";
 import md5 from "react-native-md5";
 
 Amplify.configure(awsmobile);
-
-const store = createStore(statusReducer);
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -113,14 +107,7 @@ class App extends Component<Props> {
 
   render() {
     return (
-      <Provider store={ store }>
-        <AppContainer
-          screenProps={ {
-            current_location: this.state.current_location,
-            current_conversation: this.state.current_conversation,
-          } } 
-        />
-      </Provider>
+        <AppContainer />
     );
   }
 }

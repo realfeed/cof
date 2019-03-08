@@ -3,6 +3,7 @@ import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import { updateConversation} from './ConversationActions';
 
 import { Button } from 'react-native-material-ui';
 
@@ -108,8 +109,15 @@ const styles = ({
 });
 
 const mapStateToProps = (state) => {
-  const { current_conversation } = state
-  return { current_conversation }
+  return { current_conversation: state.current_conversation.current_conversation }
 };
 
-export default connect(mapStateToProps)(ListFeedbackScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    add: (name) => {
+      dispatch(updateConversation(name))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListFeedbackScreen);

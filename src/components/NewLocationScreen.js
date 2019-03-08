@@ -3,6 +3,8 @@ import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateLocation } from './LocationActions';
 
 import { Button } from 'react-native-material-ui';
 import { ListItem} from 'react-native-elements';
@@ -14,7 +16,6 @@ import Geolocation from 'react-native-geolocation-service';
 
 Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
-import TableView from 'react-native-tableview';
 import Me from '../../me';
 
 export class NewLocationScreen extends Component<Props> {
@@ -109,7 +110,10 @@ export class NewLocationScreen extends Component<Props> {
               topDivider
               bottomDivider
               checkBox
-              onPress={() => {}}
+              onPress={() => {
+                this.props.add(this.state.current_location)
+                this.props.navigation.navigate("Home")
+              }}
               />
             ))
           }
@@ -158,8 +162,15 @@ const styles = ({
 });
 
 const mapStateToProps = (state) => {
-  const { current_location } = state
-  return { current_location }
+  return { current_location: state.current_location.current_location }
 };
 
-export default connect(mapStateToProps)(NewLocationScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    add: (name) => {
+      dispatch(updateLocation(name))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewLocationScreen);

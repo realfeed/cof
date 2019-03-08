@@ -117,8 +117,7 @@ const styles = ({
 });
 
 const mapStateToProps = (state) => {
-  const { current_location } = state
-  return { current_location }
+  return { current_location: state.current_location.current_location }
 };
 
 export default connect(mapStateToProps)(NewFeedbackScreen);

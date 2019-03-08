@@ -5,15 +5,12 @@ import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import { Button } from 'react-native-material-ui';
-import { BottomNavigation } from 'react-native-material-ui';
+import { ListItem} from 'react-native-elements';
 
 import Chart from './Chart';
 import { client } from '../../App'
 
-import TableView from 'react-native-tableview';
 import Me from '../../me';
-
-const { Section, Item } = TableView
 
 import Amplify, { Auth } from 'aws-amplify';
 import gql from 'graphql-tag';
@@ -78,35 +75,44 @@ export class HomeScreen extends Component<Props> {
           icon="add"
           onPress={()=> this.props.navigation.navigate("NewLocation")}>
         </Button>
-        <TableView
-          style={styles.container}
-          textColor="black"
-          headerTextColor="black"
-          selectedTextColor="rgba(249,144,0,0.9)"
-          headerFontFamily="Helvetica Neue"
-          headerFontSize={15}
-          headerFontWeight="bold"
-          fontFamily="Helvetica Neue"
-          fontSize={15}
-          allowsToggle
-          selectedValue={this.state.myBuildings[0].propertyId}
-          tableViewStyle={TableView.Consts.Style.Grouped}
-          tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
-          onPress={event => console.log(event)}>
-          <Section label="Current Location">
-            <Item value="1" onPress={() => true}>
-              {this.state.myBuildings[0].propertyId}
-            </Item>
-          </Section>
-          <Section label="Participating Locations">
-            <Item value="1" onPress={() => true}>
-              {this.state.myBuildings[0].propertyId}
-            </Item>
-            <Item value="2" onPress={() => true}>
-              {this.state.myBuildings[1].propertyId}
-            </Item>
-          </Section>
-        </TableView>
+        <View>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+            CURRENT LOCATION
+          </Text>
+        </View>
+        <View>
+          <ListItem
+          divider
+          titleStyle={styles.listItemRoot}
+          topDivider
+          bottomDivider
+          checkBox
+          onPress={() => {selected}}
+          >
+            {this.state.current_location}
+          </ListItem>
+        </View>
+        <View>
+          <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
+            PARTICIPATING LOCATIONS
+          </Text>
+        </View>
+        <View>
+          {
+            this.state.myBuildings.map((otherPlace, index) => (
+              <ListItem
+              divider
+              key={index}
+              title={otherPlace.propertyId}
+              titleStyle={styles.listItemRoot}
+              topDivider
+              bottomDivider
+              checkBox
+              onPress={() => {selected}}
+              />
+            ))
+          }
+        </View>
         <View style={styles.wrapper}>
           <Button
             style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}
@@ -137,12 +143,21 @@ const styles = ({
     margin: 20,
     backgroundColor: "rgba(0,0,0,0.8)",
     borderRadius: 5,
-  }
+  },
+  listItemRoot: {
+    color:"black",
+    font: "Helvetica Neue",
+    fontSize: 15,
+  },
+  listItemSelected: {
+    color: "rgba(249,144,0,0.9)",
+    font: "Helvetica Neue",
+    fontSize: 15,
+  },
 });
 
 const mapStateToProps = (state) => {
-  const { current_location } = state
-  return { current_location }
+  return { current_location: state.current_location.current_location }
 };
 
 export default connect(mapStateToProps)(HomeScreen);
