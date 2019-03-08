@@ -4,7 +4,8 @@ import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
-import { Button, ListItem, Subheader } from 'react-native-material-ui';
+import { Button } from 'react-native-material-ui';
+import { ListItem} from 'react-native-elements';
 
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
@@ -92,32 +93,27 @@ export class NewLocationScreen extends Component<Props> {
           style={styles.container}>
           </Mapbox.MapView>
         </View>
-        <Button
-        iconLeft
-        style={{ text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { backgroundColor: "rgba(0,0,0,0.8)", height: 50, margin: 18, borderRadius: 5 } }}
-        text="Add Location"
-        upperCase={false}
-        icon="add"
-        onPress={()=> this.props.navigation.navigate("Home")}>
-        </Button>
-        <View style={styles.container}>
+        <View>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
             NEARBY LOCATIONS
           </Text>
         </View>
-        {
-          this.state.placeNames.map((placeName, index) => {
-            console.log("Rendering placeNames");
-            console.log(this.state.placeNames);
-            console.log(this.state.placeNames[0].place_name);
-            return
-            <View style={styles.container}>
-              <ListItem key={index} root={styles.listItemRoot} selected={styles.listItemSelected} onPress={() => selected}>
-                {placeName.place_name}
-              </ListItem>;
-            </View>
-          })
-        }
+        <View>
+          {
+            this.state.placeNames.map((placeName, index) => (
+              <ListItem
+              divider
+              key={index}
+              title={placeName.place_name}
+              titleStyle={styles.listItemRoot}
+              topDivider
+              bottomDivider
+              checkBox
+              onPress={() => {}}
+              />
+            ))
+          }
+        </View>
         <View style={styles.wrapper}>
           <Button
             style={{text: { color:"white", font: "Helvetica Neue", fontSize:15, fontWeight: "bold" },  container: { height: 50, width: 160} }}
@@ -153,15 +149,11 @@ const styles = ({
     color:"black",
     font: "Helvetica Neue",
     fontSize: 15,
-    borderWidth: 0.4,
-    borderColor: "rgba(0,0,0,0.3)",
   },
   listItemSelected: {
     color: "rgba(249,144,0,0.9)",
     font: "Helvetica Neue",
     fontSize: 15,
-    borderWidth: 0.4,
-    borderColor: "rgba(0,0,0,0.3)",
   },
 });
 
