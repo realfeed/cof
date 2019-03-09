@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
+import { Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -107,11 +107,9 @@ export class NewLocationScreen extends Component<Props> {
               key={index}
               title={placeName.place_name}
               titleStyle={styles.listItemRoot}
-              topDivider
-              bottomDivider
               checkBox
               onPress={() => {
-                this.props.add(this.state.current_location)
+                this.props.add.bind(this)
                 this.props.navigation.navigate("Home")
               }}
               />

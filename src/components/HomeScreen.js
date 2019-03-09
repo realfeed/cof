@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
+import { TouchableHighlight, Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -81,16 +81,16 @@ export class HomeScreen extends Component<Props> {
           </Text>
         </View>
         <View>
-          <ListItem
-          divider
-          titleStyle={styles.listItemRoot}
-          topDivider
-          bottomDivider
-          checkBox
-          onPress={() => {selected}}
-          >
-            {this.state.current_location}
-          </ListItem>
+          <TouchableHighlight onPress={this._onPressButton}>
+            <ListItem
+            divider
+            titleStyle={styles.listItemRoot}
+            hideChevron
+            underlayColor={"rgba(0,0,0,0.3)"}
+            >
+              {this.state.current_location}
+            </ListItem>
+          </TouchableHighlight>
         </View>
         <View>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", marginLeft: 20, marginTop: 18 }}>
@@ -100,16 +100,17 @@ export class HomeScreen extends Component<Props> {
         <View style={{ flex: 1, justifyContent: "flex-start"}}>
           {
             this.state.myBuildings.map((otherPlace, index) => (
-              <ListItem
-              divider
-              key={index}
-              title={otherPlace.propertyId}
-              titleStyle={styles.listItemRoot}
-              topDivider
-              bottomDivider
-              checkBox
-              onPress={() => {selected}}
-              />
+              <TouchableHighlight>
+                <ListItem
+                divider
+                hideChevron
+                underlayColor={"rgba(0,0,0,0.3)"}
+                key={index}
+                title={otherPlace.propertyId}
+                titleStyle={styles.listItemRoot}
+                onPress={() => {}}
+                />
+              </TouchableHighlight>
             ))
           }
         </View>

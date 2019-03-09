@@ -47,9 +47,6 @@ export class ListFeedbackScreen extends Component<Props> {
               subtitle={conversations.PropertyId}
               titleStyle={styles.listItemRoot}
               subtitleStyle={styles.listItemSelected}
-              topDivider
-              bottomDivider
-              checkBox
               onPress={() => {
                 this.props.add(this.state.current_conversation)
                 this.props.navigation.navigate("Messages")
