@@ -157,8 +157,8 @@ const styles = ({
   },
 });
 
-const mapStateToProps = (state) => {
-  return { current_location: state.current_location }
-};
-
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(state => {
+  return {
+    current_location: state.current_location
+  }
+})(HomeScreen);

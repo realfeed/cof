@@ -69,13 +69,14 @@ export class NewFeedbackScreen extends Component<Props> {
             <View
               style={styles.container}>
               <TextInput
+                placeholder="Type your impression here"
+                placeholderTextColor={"rgba(0,0,0,0.3)"}
                 type="TextInput"
                 name="feedbackTextInput"
                 id="feedbackTextInput"
                 multiline={true}
                 style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}
                 onChangeText={(impression) => {this.setState({impression})} }>
-                *
               </TextInput>
             </View>
           </Form>
@@ -116,8 +117,8 @@ const styles = ({
   }
 });
 
-const mapStateToProps = (state) => {
-  return { current_location: state.current_location }
-};
-
-export default connect(mapStateToProps)(NewFeedbackScreen);
+export default connect(state => {
+  return {
+    current_location: state.current_location
+  }
+})(NewFeedbackScreen);

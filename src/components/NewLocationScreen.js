@@ -160,14 +160,8 @@ const styles = ({
   },
 });
 
-const mapStateToProps = (state) => {
-  return { current_location: state.current_location }
-};
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    updateLocation,
-  }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewLocationScreen);
+export default connect(state => {
+  return {
+    current_location: state.current_location
+  }
+}, { updateLocation })(NewLocationScreen);

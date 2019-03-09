@@ -48,7 +48,7 @@ export class ListFeedbackScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               subtitleStyle={styles.listItemSelected}
               onPress={() => {
-                this.props.add(this.state.current_conversation)
+                this.props.updateConversation(conversations.name)
                 this.props.navigation.navigate("Messages")
               }}
               />
@@ -98,14 +98,8 @@ const styles = ({
   }
 });
 
-const mapStateToProps = (state) => {
-  return { current_conversation: state.current_conversation }
-};
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    updateConversation,
-  }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListFeedbackScreen);
+export default connect(state => {
+  return {
+    current_conversation: state.current_conversation
+  }
+}, { updateConversation })(ListFeedbackScreen);

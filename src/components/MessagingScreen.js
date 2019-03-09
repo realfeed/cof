@@ -24,22 +24,18 @@ export class MessagingScreen extends Component<Props> {
     return (
       <React.Fragment>
         <View style={{ flex:1, margin:20}}>
-          <Card style={{ container: { borderRadius: 5, backgroundColor:"rgba(30,136,229,0.8)" } }}>
-            <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
-              {this.state.myMessages[0].sender}
-            </Text >
-            <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
-              {this.state.myMessages[0].content}
-            </Text >
-          </Card>
-          <Card style={{ container: { borderRadius: 5,backgroundColor:"rgba(229,57,53,0.8)"} }}>
-            <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 20 }}>
-              {this.state.myMessages[1].sender}
-            </Text >
-            <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
-              {this.state.myMessages[1].content}
-            </Text >
-          </Card>
+          {
+            this.state.myMessages.map((messages) => (
+              <Card style={{ container: { borderRadius: 5, backgroundColor:"rgba(30,136,229,0.8)" } }}>
+                <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", marginTop: 20, marginLeft: 20, marginRight: 20 }}>
+                  {messages.sender}
+                </Text>
+                <Text  style={{ color:"black", font: "Helvetica Neue", fontSize:15, marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
+                  {messages.content}
+                </Text>
+              </Card>
+            ))
+          }
         </View>
         <View style={{ margin: 20 }}>
           <Text style={{ color:"black", font: "Helvetica Neue", fontSize:15, fontWeight: "bold", margin: 5, flexWrap: "wrap"}}>
@@ -52,9 +48,10 @@ export class MessagingScreen extends Component<Props> {
               <TextInput
                 type="TextInput"
                 name="feedbackTextInput"
+                placeholder="Type your reply here"
+                placeholderTextColor={"rgba(0,0,0,0.3)"}
                 multiline={true}
                 style={{ color:"black", font: "Helvetica Neue", fontSize:15, margin: 20 }}>
-                *
               </TextInput>
             </View>
           </Form>
@@ -95,8 +92,8 @@ const styles = ({
   }
 });
 
-const mapStateToProps = (state) => {
-  return { current_conversation: state.current_conversation }
-};
-
-export default connect(mapStateToProps)(MessagingScreen);
+export default connect(state => {
+  return {
+    current_conversation: state.current_conversation
+  }
+})(MessagingScreen);
