@@ -81,7 +81,7 @@ export class HomeScreen extends Component<Props> {
           </Text>
         </View>
         <View>
-          <TouchableHighlight onPress={this._onPressButton}>
+          <TouchableHighlight>
             <ListItem
             divider
             titleStyle={styles.listItemRoot}

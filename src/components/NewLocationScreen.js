@@ -109,7 +109,8 @@ export class NewLocationScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               checkBox
               onPress={() => {
-                this.props.add.bind(this)
+                this.props.add(placeName.place_name)
+                alert(placeName.place_name)
                 this.props.navigation.navigate("Home")
               }}
               />
