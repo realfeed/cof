@@ -109,8 +109,8 @@ export class NewLocationScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               checkBox
               onPress={() => {
-                this.props.add(placeName.place_name)
-                alert(placeName.place_name)
+                this.props.updateLocation(placeName.place_name)
+                alert(this.props.current_location)
                 this.props.navigation.navigate("Home")
               }}
               />
@@ -161,15 +161,13 @@ const styles = ({
 });
 
 const mapStateToProps = (state) => {
-  return { current_location: state.current_location.current_location }
+  return { current_location: state.current_location }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    add: (name) => {
-      dispatch(updateLocation(name))
-    }
-  }
-}
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    updateLocation,
+  }, dispatch)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewLocationScreen);

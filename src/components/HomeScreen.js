@@ -23,7 +23,7 @@ export class HomeScreen extends Component<Props> {
     this.state = {
       myProperties: [],
       myBuildings: Me.data.me.properties.userProperties,
-      currentUser: " "
+      currentUser: " ",
     }
   }
 
@@ -88,7 +88,7 @@ export class HomeScreen extends Component<Props> {
             hideChevron
             underlayColor={"rgba(0,0,0,0.3)"}
             >
-              {this.state.current_location}
+              {this.props.current_location}
             </ListItem>
           </TouchableHighlight>
         </View>
@@ -158,7 +158,7 @@ const styles = ({
 });
 
 const mapStateToProps = (state) => {
-  return { current_location: state.current_location.current_location }
+  return { current_location: state.current_location }
 };
 
 export default connect(mapStateToProps)(HomeScreen);

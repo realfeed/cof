@@ -12,19 +12,13 @@ const statusReducer = (state = INITIAL_STATE, action) => {
     case LOCATION_UPDATE:
       return {
         ...state,
-        current_location: state.current_location.concat({
-          key: Math.random(),
-          value: action.payload
-        })
+        current_location: action.payload
       };
 
       case CONVERSATION_UPDATE:
         return {
           ...state,
-          current_conversation: state.current_conversation.concat({
-            key: Math.random(),
-            value: action.payload
-          })
+          current_conversation: action.payload
         };
 
     default:

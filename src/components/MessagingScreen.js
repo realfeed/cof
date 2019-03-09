@@ -96,7 +96,7 @@ const styles = ({
 });
 
 const mapStateToProps = (state) => {
-  return { current_conversation: state.current_conversation.current_conversation }
+  return { current_conversation: state.current_conversation }
 };
 
 export default connect(mapStateToProps)(MessagingScreen);
