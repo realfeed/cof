@@ -26,6 +26,4 @@ const statusReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default combineReducers({
-  status: statusReducer,
-});
+export default statusReducer;
