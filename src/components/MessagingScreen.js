@@ -3,6 +3,8 @@ import {Platform, StyleSheet, Text, View, Linking, TextInput} from 'react-native
 
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import { updateConversation } from './ConversationActions';
+import { bindActionCreators } from 'redux';
 
 import { Button, Card } from 'react-native-material-ui';
 
@@ -92,8 +94,15 @@ const styles = ({
   }
 });
 
-export default connect(state => {
-  return {
-    current_conversation: state.current_conversation
-  }
-})(MessagingScreen);
+const mapStateToProps = (state) => {
+  const { current_conversation } = state
+  return { current_conversation }
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    updateConversation,
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessagingScreen);

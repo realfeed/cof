@@ -3,6 +3,8 @@ import { TouchableHighlight, Platform, StyleSheet, Text, View, Linking} from 're
 
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateLocation } from './LocationActions';
 
 import { Button } from 'react-native-material-ui';
 import { ListItem} from 'react-native-elements';
@@ -157,8 +159,15 @@ const styles = ({
   },
 });
 
-export default connect(state => {
-  return {
-    current_location: state.current_location
-  }
-})(HomeScreen);
+const mapStateToProps = (state) => {
+  const { current_location } = state
+  return { current_location }
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    updateLocation,
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

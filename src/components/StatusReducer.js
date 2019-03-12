@@ -3,8 +3,8 @@ import { LOCATION_UPDATE } from './types';
 import { CONVERSATION_UPDATE } from './types';
 
 const INITIAL_STATE = {
-  current_location: [],
-  current_conversation: [],
+  current_location: "Please update your current location",
+  current_conversation: "",
 };
 
 const statusReducer = (state = INITIAL_STATE, action) => {
