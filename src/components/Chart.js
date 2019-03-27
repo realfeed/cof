@@ -27,7 +27,7 @@ export default class Chart extends Component{
   render() {
     return(
       <Svg viewBox={`0 0 ${width} ${height}`}
-          style={{ width: "100%", height: "auto" }}
+          style={{ width: "100%", height: "35%" }}
       >
         <VictoryStack horizontal
           standalone={false}

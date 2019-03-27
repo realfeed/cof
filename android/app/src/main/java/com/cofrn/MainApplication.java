@@ -33,7 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
             new SvgPackage(),
             new RNAWSCognitoPackage(),
             new VectorIconsPackage(),
-          new RCTMGLPackage()
+          new RCTMGLPackage(),
+          new RNFusedLocationPackage()
       );
     }
 
@@ -53,11 +54,4 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
   }
-
-  @Override
-    protected List<ReactPackage> getPackages() {
-        return Arrays.<ReactPackage>asList(
-            new RNFusedLocationPackage()
-        );
-    }
 }
