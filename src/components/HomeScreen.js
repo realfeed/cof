@@ -23,6 +23,7 @@ export default class HomeScreen extends Component<Props> {
       myProperties: [],
       myBuildings: Me.data.me.properties.userProperties,
       currentUser: " ",
+      currentLocationID: " ",
     }
   }
 
@@ -32,7 +33,7 @@ export default class HomeScreen extends Component<Props> {
       console.log(this.state.currentUser);
       const myself = await client.query({
         query: gql(me),
-        variables: { username: this.state.currentUser }
+        variables: { username: this.state.currentUser, currentLocationID: this.state.currentLocationID}
       });
       console.log("myself Response");
             if (myself.data.me === null) {} else {
@@ -87,7 +88,7 @@ export default class HomeScreen extends Component<Props> {
             hideChevron
             underlayColor={"rgba(0,0,0,0.3)"}
             >
-              "Users current location"
+              { this.state.currentLocationID }
             </ListItem>
           </TouchableHighlight>
         </View>
