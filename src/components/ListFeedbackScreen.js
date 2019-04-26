@@ -46,7 +46,6 @@ export default class ListFeedbackScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               subtitleStyle={styles.listItemSelected}
               onPress={() => {
-                this.props.updateConversation(conversations.name)
                 this.props.navigation.navigate("Messages")
               }}
               />

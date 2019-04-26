@@ -15,7 +15,7 @@ import { createConversation } from '../graphql/mutations';
 import EventEmitter from "react-native-md5";
 import md5 from "react-native-md5";
 
-export class NewFeedbackScreen extends Component<Props> {
+export default class NewFeedbackScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {

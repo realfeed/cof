@@ -87,7 +87,7 @@ export default class HomeScreen extends Component<Props> {
             hideChevron
             underlayColor={"rgba(0,0,0,0.3)"}
             >
-              {this.props.current_location}
+              "Users current location"
             </ListItem>
           </TouchableHighlight>
         </View>
