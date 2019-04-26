@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import { Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { updateLocation } from './LocationActions';
 
 import { Button } from 'react-native-material-ui';
 import { ListItem} from 'react-native-elements';
@@ -18,7 +15,7 @@ Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 import Me from '../../me';
 
-export class NewLocationScreen extends Component<Props> {
+export default class NewLocationScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -159,16 +156,3 @@ const styles = ({
     fontSize: 15,
   },
 });
-
-const mapStateToProps = (state) => {
-  const { current_location } = state
-  return { current_location }
-};
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    updateLocation,
-  }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewLocationScreen);

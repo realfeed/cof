@@ -2,16 +2,13 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
-import { connect } from 'react-redux';
-import { updateConversation } from './ConversationActions';
-import { bindActionCreators } from 'redux';
 
 import { Button } from 'react-native-material-ui';
 import { ListItem } from 'react-native-elements';
 
 import ListConversations from '../../listConversations';
 
-export class ListFeedbackScreen extends Component<Props> {
+export default class ListFeedbackScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,16 +95,3 @@ const styles = ({
     fontSize: 12,
   }
 });
-
-const mapStateToProps = (state) => {
-  const { current_conversation } = state
-  return { current_conversation }
-};
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    updateConversation,
-  }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListFeedbackScreen);

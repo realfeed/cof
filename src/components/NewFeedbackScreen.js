@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking, TextInput} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { updateLocation } from './LocationActions';
 
 import { Button } from 'react-native-material-ui';
 
@@ -118,16 +115,3 @@ const styles = ({
     borderRadius: 5,
   }
 });
-
-const mapStateToProps = (state) => {
-  const { current_location } = state
-  return { current_location }
-};
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    updateLocation,
-  }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewFeedbackScreen);
