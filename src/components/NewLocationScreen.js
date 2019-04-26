@@ -10,6 +10,7 @@ import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 
 import gql from 'graphql-tag';
+import Amplify, { Auth } from 'aws-amplify';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { updateUser } from '../graphql/queries';
 
@@ -28,16 +29,16 @@ export default class NewLocationScreen extends Component<Props> {
       placeNames: [],
       location: [0,0],
       currentUser: " ",
-      cognitoId: ,
-      userId: ,
-      username: ,
-      userType: ,
-      currentLocationID: ,
-      currentConversationID: ,
+      cognitoId: " ",
+      userId: " ",
+      username: " ",
+      userType: " ",
+      currentLocationID: " ",
+      currentConversationID: " ",
     }
   }
 
-  setCurrentLocation = (placeName.place_name) => {
+  setCurrentLocation = (place_name) => {
     (async () => {
       console.log("Awaiting mutation")
       const result = await client.mutate({
@@ -49,7 +50,7 @@ export default class NewLocationScreen extends Component<Props> {
             userId: this.state.userId,
             username: this.state.username,
             userType: this.state.userType,
-            currentLocationID: placeName.place_name,
+            currentLocationID: place_name,
             currentConversationID: this.state.currentConversationID,
           }
         }
