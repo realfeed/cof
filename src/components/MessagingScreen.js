@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Linking, TextInput} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
-import { connect } from 'react-redux';
-import { updateConversation } from './ConversationActions';
-import { bindActionCreators } from 'redux';
 
 import { Button, Card } from 'react-native-material-ui';
 
@@ -12,7 +9,7 @@ import Form from 'react-native-form';
 
 import GetConversation from '../../getConversation'
 
-export class MessagingScreen extends Component<Props> {
+export default class MessagingScreen extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,16 +90,3 @@ const styles = ({
     borderRadius: 5,
   }
 });
-
-const mapStateToProps = (state) => {
-  const { current_conversation } = state
-  return { current_conversation }
-};
-
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    updateConversation,
-  }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(MessagingScreen);
