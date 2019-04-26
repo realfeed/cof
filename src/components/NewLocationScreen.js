@@ -9,6 +9,10 @@ import { ListItem} from 'react-native-elements';
 import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 
+import gql from 'graphql-tag';
+import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+import { updateUser } from '../graphql/queries';
+
 import Geolocation from 'react-native-geolocation-service';
 
 Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
@@ -23,7 +27,54 @@ export default class NewLocationScreen extends Component<Props> {
       mapboxRequest: "",
       placeNames: [],
       location: [0,0],
+      currentUser: " ",
+      cognitoId: ,
+      userId: ,
+      username: ,
+      userType: ,
+      currentLocationID: ,
+      currentConversationID: ,
     }
+  }
+
+  setCurrentLocation = (placeName.place_name) => {
+    (async () => {
+      console.log("Awaiting mutation")
+      const result = await client.mutate({
+        mutation: gql(updateUser),
+        variables: {
+          input: {
+            currentUser: this.state.currentUser,
+            cognitoId: this.state.cognitoId,
+            userId: this.state.userId,
+            username: this.state.username,
+            userType: this.state.userType,
+            currentLocationID: placeName.place_name,
+            currentConversationID: this.state.currentConversationID,
+          }
+        }
+      });
+      console.log(result.data.updateUser);
+      this.props.navigation.navigate("Home");
+    })();
+  }
+
+  myselfResponse = () => {
+    (async () => {
+      console.log("Calling API");
+      console.log(this.state.currentUser);
+      const myself = await client.query({
+        query: gql(me),
+        variables: {currentUser: this.state.currentUser,
+                    cognitoId: this.state.cognitoId,
+                    userId: this.state.userId,
+                    username: this.state.username,
+                    userType: this.state.userType,
+                    currentLocationID: this.state.currentLocationID,
+                    currentConversationID: this.state.currentConversationID}
+      });
+      console.log("myself Response");
+    })();
   }
 
   geoCoding = () => {
@@ -76,6 +127,19 @@ export default class NewLocationScreen extends Component<Props> {
 
   componentDidMount() {
     this.geoLocation();
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+    .then(
+      user => {
+        console.log(JSON.stringify(user.username, null, 2));
+        this.setState((currentUser) => {
+          return { currentUser: user.username}
+        });
+      this.myselfResponse();
+      console.log("State set");
+    })
+    .catch(err => console.log(err));
   }
 
   static navigationOptions = { header:null};
@@ -106,8 +170,7 @@ export default class NewLocationScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               checkBox
               onPress={() => {
-                alert(this.props.current_location)
-                this.props.navigation.navigate("Home")
+                this.setCurrentLocation(placeName.place_name);
               }}
               />
             ))
