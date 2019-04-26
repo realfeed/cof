@@ -92,6 +92,8 @@ export const onCreateConversation = `subscription OnCreateConversation(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -142,6 +144,8 @@ export const onUpdateConversation = `subscription OnUpdateConversation(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -192,6 +196,8 @@ export const onDeleteConversation = `subscription OnDeleteConversation(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -239,6 +245,8 @@ export const onCreateUser = `subscription OnCreateUser(
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -272,6 +280,8 @@ export const onUpdateUser = `subscription OnUpdateUser(
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -305,6 +315,8 @@ export const onDeleteUser = `subscription OnDeleteUser(
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {

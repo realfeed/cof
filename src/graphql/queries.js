@@ -8,6 +8,8 @@ export const allMessage = `query AllMessage($after: String, $conversationId: ID!
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -25,6 +27,8 @@ export const allMessage = `query AllMessage($after: String, $conversationId: ID!
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -48,6 +52,8 @@ export const allMessageConnection = `query AllMessageConnection($after: String, 
         userId
         username
         userType
+        currentLocationID
+        currentConversationID
       }
       content
       conversationId
@@ -59,6 +65,8 @@ export const allMessageConnection = `query AllMessageConnection($after: String, 
         userId
         username
         userType
+        currentLocationID
+        currentConversationID
       }
       sender
     }
@@ -83,6 +91,8 @@ export const allMessageFrom = `query AllMessageFrom(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -100,6 +110,8 @@ export const allMessageFrom = `query AllMessageFrom(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -117,6 +129,8 @@ export const allUser = `query AllUser($after: String, $first: Int) {
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -140,6 +154,8 @@ export const me = `query Me {
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -200,13 +216,15 @@ export const listProperties = `query ListProperties(
   }
 }
 `;
-export const getConversation = `query GetConversation($ConversationId: ID!, $createdAt: Int!) {
-  getConversation(ConversationId: $ConversationId, createdAt: $createdAt) {
+export const getConversation = `query GetConversation($ConversationId: ID!) {
+  getConversation(ConversationId: $ConversationId) {
     origin {
       cognitoId
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -250,6 +268,8 @@ export const listConversations = `query ListConversations(
         userId
         username
         userType
+        currentLocationID
+        currentConversationID
       }
       createdAt
       ConversationId
@@ -275,6 +295,8 @@ export const getUser = `query GetUser($cognitoId: ID!) {
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -303,6 +325,8 @@ export const listUsers = `query ListUsers(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }

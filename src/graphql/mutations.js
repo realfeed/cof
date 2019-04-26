@@ -18,6 +18,8 @@ export const createMessage = `mutation CreateMessage(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -35,6 +37,8 @@ export const createMessage = `mutation CreateMessage(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -79,6 +83,8 @@ export const createUserConversations = `mutation CreateUserConversations(
         userId
         username
         userType
+        currentLocationID
+        currentConversationID
       }
       userId
     }
@@ -88,6 +94,8 @@ export const createUserConversations = `mutation CreateUserConversations(
         userId
         username
         userType
+        currentLocationID
+        currentConversationID
       }
       createdAt
       ConversationId
@@ -109,6 +117,8 @@ export const createUserConversations = `mutation CreateUserConversations(
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -163,6 +173,8 @@ export const createConversation = `mutation CreateConversation($input: CreateCon
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -201,6 +213,8 @@ export const updateConversation = `mutation UpdateConversation($input: UpdateCon
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -239,6 +253,8 @@ export const deleteConversation = `mutation DeleteConversation($input: DeleteCon
       userId
       username
       userType
+      currentLocationID
+      currentConversationID
       properties {
         nextToken
       }
@@ -276,6 +292,8 @@ export const createUser = `mutation CreateUser($input: CreateUserInput!) {
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -299,6 +317,8 @@ export const updateUser = `mutation UpdateUser($input: UpdateUserInput!) {
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {
@@ -322,6 +342,8 @@ export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
     userId
     username
     userType
+    currentLocationID
+    currentConversationID
     properties {
       nextToken
       userProperties {

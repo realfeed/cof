@@ -69,6 +69,8 @@ export type UpdateUserInput = {|
   userId?: ?string,
   username?: ?string,
   userType?: ?string,
+  currentLocationID: string,
+  currentConversationID: string,
 |};
 
 export type DeleteUserInput = {|
@@ -171,6 +173,8 @@ export type CreateMessageMutation = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -191,6 +195,8 @@ export type CreateMessageMutation = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -240,6 +246,8 @@ export type CreateUserConversationsMutation = {|
         userId: ?string,
         username: ?string,
         userType: ?string,
+        currentLocationID: string,
+        currentConversationID: string,
       |},
       userId: string,
     |} >,
@@ -251,6 +259,8 @@ export type CreateUserConversationsMutation = {|
         userId: ?string,
         username: ?string,
         userType: ?string,
+        currentLocationID: string,
+        currentConversationID: string,
       |},
       createdAt: number,
       ConversationId: string,
@@ -274,6 +284,8 @@ export type CreateUserConversationsMutation = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -351,6 +363,8 @@ export type CreateConversationMutation = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -399,6 +413,8 @@ export type UpdateConversationMutation = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -447,6 +463,8 @@ export type DeleteConversationMutation = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -493,6 +511,8 @@ export type CreateUserMutation = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -525,6 +545,8 @@ export type UpdateUserMutation = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -557,6 +579,8 @@ export type DeleteUserMutation = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -593,6 +617,8 @@ export type AllMessageQuery = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -613,6 +639,8 @@ export type AllMessageQuery = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -643,6 +671,8 @@ export type AllMessageConnectionQuery = {|
         userId: ?string,
         username: ?string,
         userType: ?string,
+        currentLocationID: string,
+        currentConversationID: string,
       |},
       content: string,
       conversationId: string,
@@ -655,6 +685,8 @@ export type AllMessageConnectionQuery = {|
         userId: ?string,
         username: ?string,
         userType: ?string,
+        currentLocationID: string,
+        currentConversationID: string,
       |},
       sender: ?string,
     |} >,
@@ -678,6 +710,8 @@ export type AllMessageFromQuery = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -698,6 +732,8 @@ export type AllMessageFromQuery = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -723,6 +759,8 @@ export type AllUserQuery = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -751,6 +789,8 @@ export type MeQuery = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -832,7 +872,6 @@ export type ListPropertiesQuery = {|
 
 export type GetConversationQueryVariables = {|
   ConversationId: string,
-  createdAt: number,
 |};
 
 export type GetConversationQuery = {|
@@ -844,6 +883,8 @@ export type GetConversationQuery = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -896,6 +937,8 @@ export type ListConversationsQuery = {|
         userId: ?string,
         username: ?string,
         userType: ?string,
+        currentLocationID: string,
+        currentConversationID: string,
       |},
       createdAt: number,
       ConversationId: string,
@@ -927,6 +970,8 @@ export type GetUserQuery = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -963,6 +1008,8 @@ export type ListUsersQuery = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -1056,6 +1103,8 @@ export type OnCreateConversationSubscription = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -1108,6 +1157,8 @@ export type OnUpdateConversationSubscription = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -1160,6 +1211,8 @@ export type OnDeleteConversationSubscription = {|
       userId: ?string,
       username: ?string,
       userType: ?string,
+      currentLocationID: string,
+      currentConversationID: string,
       properties: ? {|
         __typename: string,
         nextToken: ?string,
@@ -1209,6 +1262,8 @@ export type OnCreateUserSubscription = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -1244,6 +1299,8 @@ export type OnUpdateUserSubscription = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
@@ -1279,6 +1336,8 @@ export type OnDeleteUserSubscription = {|
     userId: ?string,
     username: ?string,
     userType: ?string,
+    currentLocationID: string,
+    currentConversationID: string,
     properties: ? {|
       __typename: string,
       nextToken: ?string,
