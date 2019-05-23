@@ -38,9 +38,10 @@ export default class NewLocationScreen extends Component<Props> {
     }
   }
 
-  setCurrentLocation = (place_name) => {
+  setCurrentLocation = () => {
+    console.log("setting current location");
     (async () => {
-      console.log("Awaiting mutation")
+      console.log("Awaiting mutation");
       const result = await client.mutate({
         mutation: gql(updateUser),
         variables: {
@@ -50,12 +51,13 @@ export default class NewLocationScreen extends Component<Props> {
             userId: this.state.userId,
             username: this.state.username,
             userType: this.state.userType,
-            currentLocationID: place_name,
+            currentLocationID: this.state.currentLocationID,
             currentConversationID: this.state.currentConversationID,
           }
         }
       });
       console.log(result.data.updateUser);
+      console.log("Navigating Home");
       this.props.navigation.navigate("Home");
     })();
   }
@@ -170,8 +172,11 @@ export default class NewLocationScreen extends Component<Props> {
               title={placeName.place_name}
               titleStyle={styles.listItemRoot}
               checkBox
-              onPress={() => {
-                this.setCurrentLocation(placeName.place_name);
+              onPress={(e) => {
+                this.setState({ currentLocationID: e.nativeEvent.target.getAttribute("title") })
+                .then(
+                  this.setCurrentLocation())
+                .catch(err => console.log(err));
               }}
               />
             ))
