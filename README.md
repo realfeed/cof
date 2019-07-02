@@ -72,4 +72,5 @@ react-native run-android
 #
 System Architecture
 The current target system architecture is show below:
-![IAM System Architecture](iam_architecture.png)
+
+![IAM System Architecture](./iam_architecture.png)
