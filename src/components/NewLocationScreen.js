@@ -13,6 +13,7 @@ import gql from 'graphql-tag';
 import Amplify, { Auth } from 'aws-amplify';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { updateUser } from '../graphql/queries';
+import { client} from '../../App';
 
 import Geolocation from 'react-native-geolocation-service';
 
@@ -173,10 +174,9 @@ export default class NewLocationScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               checkBox
               onPress={(e) => {
-                this.setState({ currentLocationID: e.nativeEvent.target.getAttribute("title") })
-                .then(
-                  this.setCurrentLocation())
-                .catch(err => console.log(err));
+                this.setState({ currentLocationID: placeName.place_name }, () => {
+                  this.setCurrentLocation()
+                })
               }}
               />
             ))
