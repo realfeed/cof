@@ -73,4 +73,4 @@ react-native run-android
 System Architecture
 The current target system architecture is show below:
 
-![IAM System Architecture](./iam_architecture.png?raw=true)
+![IAM System Architecture](https://github.com/ArupAus/cof/iam_architecture.png)
