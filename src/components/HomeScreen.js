@@ -14,7 +14,7 @@ import Me from '../../me';
 import Amplify, { Auth } from 'aws-amplify';
 import gql from 'graphql-tag';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
-import { me } from '../graphql/queries';
+import { getUser } from '../graphql/queries';
 
 export default class HomeScreen extends Component<Props> {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class HomeScreen extends Component<Props> {
     this.state = {
       myProperties: [],
       myBuildings: Me.data.me.properties.userProperties,
-      currentUser: " ",
+      username: " ",
       currentLocationID: " ",
     }
   }
@@ -30,16 +30,17 @@ export default class HomeScreen extends Component<Props> {
   myselfResponse = () => {
     (async () => {
       console.log("Calling API");
-      console.log(this.state.currentUser);
+      console.log(this.state.cognitoId);
       const myself = await client.query({
-        query: gql(me),
-        variables: { username: this.state.currentUser, currentLocationID: this.state.currentLocationID}
+        query: gql(getUser),
+        variables: {cognitoId: this.state.cognitoId}
       });
       console.log("myself Response");
-            if (myself.data.me === null) {} else {
+            if (myself.data.getUser === null) {} else {
               this.setState((myProperties) => {
-                return {myProperties: myself.data.me.properties.userProperties}
+                return {myProperties: myself.data.getUser.properties}
               });
+              console.log(myself.data.getUser.properties.userProperties)
             }
     })();
   }
@@ -52,8 +53,8 @@ export default class HomeScreen extends Component<Props> {
     .then(
       user => {
         console.log(JSON.stringify(user.username, null, 2));
-        this.setState((currentUser) => {
-          return { currentUser: user.username}
+        this.setState((cognitoId) => {
+          return { cognitoId: user.username}
         });
       this.myselfResponse();
       console.log("State set");
