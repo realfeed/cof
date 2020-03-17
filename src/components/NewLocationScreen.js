@@ -12,7 +12,8 @@ import { MAPBOX_ACCESS_TOKEN } from 'react-native-dotenv';
 import gql from 'graphql-tag';
 import Amplify, { Auth } from 'aws-amplify';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
-import { updateUser } from '../graphql/queries';
+import { updateUser, getUser } from '../graphql/queries';
+import { client} from '../../App';
 
 import Geolocation from 'react-native-geolocation-service';
 
@@ -28,7 +29,6 @@ export default class NewLocationScreen extends Component<Props> {
       mapboxRequest: "",
       placeNames: [],
       location: [0,0],
-      currentUser: " ",
       cognitoId: " ",
       userId: " ",
       username: " ",
@@ -40,13 +40,19 @@ export default class NewLocationScreen extends Component<Props> {
 
   setCurrentLocation = () => {
     console.log("setting current location");
+    stateSet = {cognitoId: this.state.cognitoId,
+                userId: this.state.userId,
+                username: this.state.username,
+                userType: this.state.userType,
+                currentLocationID: this.state.currentLocationID,
+                currentConversationID: this.state.currentConversationID};
+    console.log(stateSet);
     (async () => {
       console.log("Awaiting mutation");
       const result = await client.mutate({
         mutation: gql(updateUser),
         variables: {
           input: {
-            currentUser: this.state.currentUser,
             cognitoId: this.state.cognitoId,
             userId: this.state.userId,
             username: this.state.username,
@@ -65,18 +71,42 @@ export default class NewLocationScreen extends Component<Props> {
   myselfResponse = () => {
     (async () => {
       console.log("Calling API");
-      console.log(this.state.currentUser);
       const myself = await client.query({
-        query: gql(me),
-        variables: {currentUser: this.state.currentUser,
-                    cognitoId: this.state.cognitoId,
-                    userId: this.state.userId,
-                    username: this.state.username,
-                    userType: this.state.userType,
-                    currentLocationID: this.state.currentLocationID,
-                    currentConversationID: this.state.currentConversationID}
+        query: gql(getUser),
+        variables: {cognitoId: this.state.cognitoId}
       });
       console.log("myself Response");
+      console.log(myself.data.getUser)
+      this.setState((cognitoId) => {
+        return {
+          cognitoId: myself.data.getUser.cognitoId,
+        }
+      });
+      this.setState((userId) => {
+        return {
+          userId: myself.data.getUser.userId,
+        }
+      });
+      this.setState((username) => {
+        return {
+          username: myself.data.getUser.username,
+        }
+      });
+      this.setState((userType) => {
+        return {
+          userType: myself.data.getUser.userType,
+        }
+      });
+      this.setState((currentLocationID) => {
+        return {
+          currentLocationID: myself.data.getUser.currentLocationID,
+        }
+      });
+      this.setState((currentConversationID) => {
+        return {
+          currentConversationID: myself.data.getUser.currentConversationID,
+        }
+      });
     })();
   }
 
@@ -136,8 +166,8 @@ export default class NewLocationScreen extends Component<Props> {
     .then(
       user => {
         console.log(JSON.stringify(user.username, null, 2));
-        this.setState((currentUser) => {
-          return { currentUser: user.username}
+        this.setState((cognitoId) => {
+          return {cognitoId: user.username}
         });
       this.myselfResponse();
       console.log("State set");
@@ -173,10 +203,9 @@ export default class NewLocationScreen extends Component<Props> {
               titleStyle={styles.listItemRoot}
               checkBox
               onPress={(e) => {
-                this.setState({ currentLocationID: e.nativeEvent.target.getAttribute("title") })
-                .then(
-                  this.setCurrentLocation())
-                .catch(err => console.log(err));
+                this.setState({ currentLocationID: placeName.place_name }, () => {
+                  this.setCurrentLocation()
+                })
               }}
               />
             ))
