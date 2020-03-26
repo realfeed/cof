@@ -15,11 +15,13 @@ import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { updateUser, getUser } from '../graphql/queries';
 import { client} from '../../App';
 
-import Geolocation from 'react-native-geolocation-service';
+import Geolocation from '@react-native-community/geolocation';
 
 Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 import Me from '../../me';
+
+Geolocation.setRNConfiguration(config);
 
 export default class NewLocationScreen extends Component<Props> {
   constructor(props) {

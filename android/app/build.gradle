@@ -142,6 +142,9 @@ dependencies {
     compile project(':amazon-cognito-identity-js')
     compile project(':react-native-vector-icons')
     compile project(':react-native-geolocation-service')
+    compile project(':amazon-cognito-identity-js')
+    compile project(':react-native-geolocation-service')
+    compile project(':react-native-fs')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':react-native-svg')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
