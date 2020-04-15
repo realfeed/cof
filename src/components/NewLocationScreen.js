@@ -21,8 +21,6 @@ Mapbox.setAccessToken(MAPBOX_ACCESS_TOKEN);
 
 import Me from '../../me';
 
-Geolocation.setRNConfiguration(config);
-
 export default class NewLocationScreen extends Component<Props> {
   constructor(props) {
     super(props);
@@ -79,36 +77,47 @@ export default class NewLocationScreen extends Component<Props> {
       });
       console.log("myself Response");
       console.log(myself.data.getUser)
-      this.setState((cognitoId) => {
-        return {
-          cognitoId: myself.data.getUser.cognitoId,
-        }
-      });
-      this.setState((userId) => {
-        return {
-          userId: myself.data.getUser.userId,
-        }
-      });
-      this.setState((username) => {
-        return {
-          username: myself.data.getUser.username,
-        }
-      });
-      this.setState((userType) => {
-        return {
-          userType: myself.data.getUser.userType,
-        }
-      });
-      this.setState((currentLocationID) => {
-        return {
-          currentLocationID: myself.data.getUser.currentLocationID,
-        }
-      });
-      this.setState((currentConversationID) => {
-        return {
-          currentConversationID: myself.data.getUser.currentConversationID,
-        }
-      });
+        if (myself.data.getUser === null) {} else {
+          const props = {};
+          const user = myself.data && myself.data.getUser;
+          if (user.cognitoId) {
+            props = {
+              ...props,
+              cognitoId: user.cognitoID
+            }
+          }
+          if (user.userId) {
+            props={
+              ...props,
+              userId: user.userId
+            }
+          }
+          if (user.username) {
+            props={
+              ...props,
+              username: user.username
+            }
+          }
+          if (user.userType) {
+            props={
+              ...props,
+              userType: user.userType
+            }
+          }
+          if (user.currentLocationID) {
+            props={
+              ...props,
+              currentLocationID: user.currentLocationID
+            }
+          }
+          if (user.currentConversationID) {
+            props={
+              ...props,
+              currentConversationID: user.currentConversationID
+            }
+          }
+          this.setState(props);
+      }
     })();
   }
 
