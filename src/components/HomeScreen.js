@@ -36,12 +36,12 @@ export default class HomeScreen extends Component<Props> {
         variables: {cognitoId: this.state.cognitoId}
       });
       console.log("myself Response");
-            if (myself.data.getUser === null) {} else {
-              this.setState((myProperties) => {
-                return {myProperties: myself.data.getUser.properties}
-              });
-              console.log(myself.data.getUser.properties.userProperties)
-            }
+        if (myself.data.getUser === null) {} else {
+          this.setState((myProperties) => {
+            return {myProperties: myself.data.getUser.properties}
+          });
+          console.log(myself.data.getUser.properties.userProperties)
+        }
     })();
   }
 

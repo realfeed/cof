@@ -78,6 +78,8 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -137,6 +139,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-screens')
     compile project(':react-native-gesture-handler')
     compile project(':react-native-svg')
     compile project(':amazon-cognito-identity-js')
@@ -149,10 +153,7 @@ dependencies {
     implementation project(':react-native-svg')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    compile (project(':mapbox-react-native-mapbox-gl')) {
-            compile ('com.squareup.okhttp3:okhttp:3.6.0') {
-                force = true
-            }
+    implementation project(':mapbox-react-native-mapbox-gl')
     }
 }
 

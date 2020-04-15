@@ -54,7 +54,27 @@ target 'cofRN' do
   #pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   #pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
   #pod 'RCTTypeSafety', :path => "../node_modules/react-native/Libraries/TypeSafety"
-  pod 'React', :path => '../node_modules/react-native/'
+
+  # Pod react-native
+  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+      'Core',
+      'CxxBridge',
+      'DevSupport',
+      'RCTActionSheet',
+      'RCTAnimation',
+      'RCTBlob',
+      'RCTCameraRoll',
+      'RCTGeolocation',
+      'RCTImage',
+      'RCTNetwork',
+      'RCTPushNotification',
+      'RCTSettings',
+      'RCTTest',
+      'RCTText',
+      'RCTVibration',
+      'RCTWebSocket',
+      'RCTLinkingIOS'
+      ]
   #pod 'React-Core', :path => '../node_modules/react-native/Libraries'
   #pod 'React-CoreModules', :path => '../node_modules/react-native/React/CoreModules'
   #pod 'React-Core/DevSupport', :path => '../node_modules/react-native/'
@@ -100,7 +120,12 @@ target 'cofRN' do
   pod 'RNSound', :path => '../node_modules/react-native-sound'
 
   # Make also sure you have use_frameworks! enabled
-  use_frameworks!
+  # use_frameworks!
+
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
+  # Mapbox
+  pod 'react-native-mapbox-gl', :path => '../node_modules/@mapbox/react-native-mapbox-gl'
 
   target 'cofRNTests' do
     inherit! :search_paths
