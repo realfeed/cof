@@ -70,7 +70,7 @@ PODS:
   - RNAWSCognito (3.3.3):
     - JKBigInteger2 (= 0.0.5)
     - React
-  - RNCPushNotificationIOS (1.1.1):
+  - RNCPushNotificationIOS (1.3.0):
     - React
   - RNFS (2.13.2):
     - React
@@ -170,7 +170,7 @@ SPEC CHECKSUMS:
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
   react-native-mapbox-gl: a01d1781ac71d2a1a85b465436dbe741b28d873a
   RNAWSCognito: 9f5a5c4947dc94c94b3b5a06ac5874124adba400
-  RNCPushNotificationIOS: a0b6894f4ad9b93d9dac467fdf4d055660ac8a0d
+  RNCPushNotificationIOS: d5fd66aed4e03c6491ca0c6111a03d4f6455ff6c
   RNFS: d229ee245fa9685417e6d9367031d670d723547e
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
@@ -181,4 +181,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: cc7e8696afe7b6641843a8fb37d401f890fb1d03
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
